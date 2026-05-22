@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>hariku | 業務自動化エンジニア</title>
   <meta name="description" content="GAS・LINE・AIで中小企業の業務を自動化。フリーランスエンジニア hariku のポートフォリオサイトです。" />
+
+  <!-- ===== OGP / Twitter Card ===== -->
+  <meta property="og:title" content="hariku | 業務自動化エンジニア" />
+  <meta property="og:description" content="GAS・LINE・AIで中小企業の業務を自動化。繰り返し作業をゼロに。フリーランスエンジニア hariku のポートフォリオサイトです。" />
+  <meta property="og:url" content="https://hariku0212.github.io/portfolio-website/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="hariku | 業務自動化エンジニア" />
+  <meta name="twitter:description" content="GAS・LINE・AIで中小企業の業務を自動化。繰り返し作業をゼロに。フリーランスエンジニア hariku のポートフォリオサイトです。" />
+
   <style>
     /* ===== リセット & ベース ===== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -357,12 +367,56 @@
     }
     #contact .section-title { color: var(--white); }
     #contact .section-sub { color: rgba(255,255,255,0.8); }
+
+    /* フォーム */
+    .contact-form {
+      max-width: 520px;
+      margin: 0 auto 36px;
+      text-align: left;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      margin-bottom: 12px;
+      background: rgba(255,255,255,0.12);
+      color: var(--white);
+      outline: none;
+      transition: background 0.2s;
+    }
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: rgba(255,255,255,0.55); }
+    .contact-form input:focus,
+    .contact-form textarea:focus { background: rgba(255,255,255,0.2); }
+    .contact-form textarea { resize: vertical; min-height: 120px; }
+    .contact-form button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 999px;
+      background: var(--amber);
+      color: #1a1a1a;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .contact-form button:hover { background: var(--amber-dark); transform: translateY(-2px); }
+
+    .contact-divider {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.85rem;
+      margin-bottom: 24px;
+    }
     .contact-links {
       display: flex;
       gap: 16px;
       justify-content: center;
       flex-wrap: wrap;
-      margin-top: 36px;
     }
     .contact-btn {
       display: inline-flex;
@@ -699,12 +753,27 @@
   <h2 class="section-title">お問い合わせ</h2>
   <p class="section-sub">
     業務の自動化・効率化でお悩みなら、<br />
-    まずは気軽に GitHub または以下からご連絡ください。
+    まずは気軽にフォームからご連絡ください。
   </p>
-  <p style="color:rgba(255,255,255,0.75);font-size:0.9rem;max-width:480px;margin:0 auto 8px;">
+  <p style="color:rgba(255,255,255,0.75);font-size:0.9rem;max-width:480px;margin:0 auto 32px;">
     「こんなことできる？」という段階のご相談も大歓迎です。<br />
     要件整理からお手伝いします。
   </p>
+
+  <!-- Formspree フォーム
+       TODO: hariku0212@gmail.com で https://formspree.io/ にアクセスし、
+             新規フォームを作成後、下記 action の YOUR_FORM_ID を置き換えること。
+             例: action="https://formspree.io/f/abcd1234"
+  -->
+  <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    <input type="text" name="name" placeholder="お名前" required />
+    <input type="email" name="email" placeholder="メールアドレス" required />
+    <textarea name="message" placeholder="お問い合わせ内容（例: 〇〇の自動化を検討しています）" required></textarea>
+    <button type="submit">送信する</button>
+  </form>
+
+  <div class="contact-divider">— または —</div>
+
   <div class="contact-links">
     <a href="https://github.com/hariku0212" class="contact-btn contact-btn-github" target="_blank" rel="noopener">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
