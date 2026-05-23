@@ -72,15 +72,26 @@
       margin-bottom: 48px;
       font-size: 0.95rem;
     }
+
+    /*
+     * ===== タグ デザイン強化 (v4) =====
+     * 変更理由: パディング増量・ボーダー追加でピル形状を洗練
+     */
     .tag {
       display: inline-block;
-      background: var(--blue-light);
+      background: rgba(37, 99, 235, 0.08);
       color: var(--blue);
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 2px 10px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 12px;
       border-radius: 999px;
-      margin: 2px 2px 2px 0;
+      margin: 3px 3px 3px 0;
+      border: 1px solid rgba(37, 99, 235, 0.15);
+      letter-spacing: 0.2px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .tag:hover {
+      background: rgba(37, 99, 235, 0.15);
     }
 
     /* ===== カスタムスクロールバー ===== */
@@ -342,58 +353,112 @@
       background: rgba(10,20,60,0);
     }
 
-    /* ===== スキル ===== */
+    /*
+     * ===== スキルカード 全面リデザイン (v4) =====
+     *
+     * 【設計選定理由】Glassmorphism を採用
+     * 調査元: franwbu.com/blog/glassmorphism-in-web-design/ (2025)
+     *         natebal.com/glassmorphism-web-design/
+     * 選定理由:
+     * - スキルセクション背景が var(--gray-50) のため、半透明ガラス効果が最も映える
+     * - 2024-2025年ポートフォリオトレンド調査でGlassmorphismが最上位
+     * - ブラウザ対応95%以上（Chrome/Edge/Firefox/Safari全対応）
+     * - 既存カラーパレット（--blue/#2563EB, --amber/#F59E0B）のグラデーションと相性抜群
+     * - Gradient Border は白背景向きだが、gray-50背景ではガラス感の方が深みが出る
+     */
     #skills { background: var(--gray-50); }
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 20px;
     }
+
+    /* Glassmorphism スキルカード本体 */
     .skill-card {
-      background: var(--white);
-      border: 1px solid var(--gray-200);
-      border-left: 3px solid var(--blue);
-      border-radius: var(--radius);
-      padding: 28px 24px;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 16px;
+      padding: 32px 24px 28px;
       text-align: center;
-      transition: box-shadow 0.2s, transform 0.2s, border-left-color 0.2s;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  box-shadow 0.3s ease,
+                  background 0.3s ease;
+      box-shadow: 0 4px 24px rgba(37, 99, 235, 0.08),
+                  0 1px 4px rgba(0, 0, 0, 0.04);
     }
+
+    /* カード上部のカラーバー（グラデーション）*/
+    .skill-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--blue) 0%, var(--amber) 100%);
+      border-radius: 16px 16px 0 0;
+    }
+
     .skill-card:hover {
-      box-shadow: 0 6px 24px rgba(37,99,235,0.15);
-      transform: translateY(-4px);
-      border-left-color: var(--amber);
+      transform: translateY(-10px);
+      box-shadow: 0 20px 48px rgba(37, 99, 235, 0.18),
+                  0 8px 16px rgba(0, 0, 0, 0.06);
+      background: rgba(255, 255, 255, 0.9);
     }
-    /* スキルアイコン: Font Awesome / Devicons 共通スタイル */
+
+    /* スキルアイコンラッパー */
     .skill-icon {
-      font-size: 2.6rem;
-      margin-bottom: 14px;
-      line-height: 1;
       display: flex;
       align-items: center;
       justify-content: center;
+      margin-bottom: 18px;
     }
-    .skill-icon i {
-      /* Devicons は colored クラスを使う場合カラー自動、FAはここで色を設定 */
-      color: var(--blue);
-      transition: color 0.2s, transform 0.2s;
-    }
-    .skill-card:hover .skill-icon i {
-      color: var(--amber);
-      transform: scale(1.1);
-    }
-    /* Devicons colored はオリジナルカラーを保持させる */
-    .skill-icon .devicon-colored { color: inherit !important; }
-    .skill-card:hover .skill-icon .devicon-colored { transform: scale(1.1); }
 
+    /* スキルアイコンコンテナ（角丸背景付き）*/
+    .skill-icon-container {
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(245, 158, 11, 0.06) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  background 0.3s ease,
+                  box-shadow 0.3s ease;
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.08);
+    }
+
+    .skill-card:hover .skill-icon-container {
+      transform: scale(1.15) rotate(-3deg);
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.15) 0%, rgba(245, 158, 11, 0.12) 100%);
+      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.16);
+    }
+
+    /* Devicons colored はオリジナルカラーを保持 */
+    .skill-icon-container .devicon-colored { color: inherit !important; }
+
+    /* スキル名・説明文 強化 */
     .skill-name {
-      font-weight: 700;
-      font-size: 1rem;
-      margin-bottom: 6px;
+      font-weight: 800;
+      font-size: 1.05rem;
+      margin-bottom: 8px;
       color: var(--gray-800);
+      letter-spacing: -0.3px;
     }
-    .skill-desc { font-size: 0.82rem; color: var(--gray-600); line-height: 1.5; }
+    .skill-desc { font-size: 0.82rem; color: var(--gray-600); line-height: 1.6; }
 
-    /* ===== 実績 ===== */
+    /*
+     * ===== 制作実績カード デザイン強化 (v4) =====
+     * - ホバー効果: translateY(-10px) scale(1.02) + 強化シャドウ
+     * - プロジェクトヘッダー: 下端に半楕円波形追加
+     * - 本文エリア: 薄いグラデーション背景
+     * - リンクボタン: アイコン右移動アニメーション追加
+     */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -403,14 +468,33 @@
       border: 1px solid var(--gray-200);
       border-radius: var(--radius);
       overflow: hidden;
-      transition: box-shadow 0.2s, transform 0.2s;
+      transition: box-shadow 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
       background: var(--white);
     }
-    .project-card:hover { box-shadow: 0 8px 28px rgba(37,99,235,0.12); transform: translateY(-4px); }
-    .project-header {
-      padding: 20px 24px 16px;
-      color: var(--white);
+    .project-card:hover {
+      box-shadow: 0 24px 56px rgba(37, 99, 235, 0.18),
+                  0 8px 20px rgba(0, 0, 0, 0.08);
+      transform: translateY(-10px) scale(1.02);
     }
+
+    /* プロジェクトヘッダー: 下端に半楕円波形 */
+    .project-header {
+      padding: 24px 24px 20px;
+      color: var(--white);
+      position: relative;
+    }
+    .project-header::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 20px;
+      background: var(--white);
+      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    }
+
     /* プロジェクトカード個別カラー */
     .project-card:nth-child(1) .project-header { background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%); }
     .project-card:nth-child(2) .project-header { background: linear-gradient(135deg, #065F46 0%, #059669 100%); }
@@ -419,24 +503,77 @@
     .project-card:nth-child(5) .project-header { background: linear-gradient(135deg, #0E7490 0%, #0EA5E9 100%); }
     .project-card:nth-child(6) .project-header { background: linear-gradient(135deg, #4D7C0F 0%, #84CC16 100%); }
     .project-card:nth-child(7) .project-header { background: linear-gradient(135deg, #881337 0%, #E11D48 100%); }
-    .project-icon { font-size: 1.8rem; margin-bottom: 8px; }
+
+    /* プロジェクトアイコン: Font Awesomeアイコンコンテナ */
+    .project-icon {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-bottom: 8px;
+    }
+    .project-icon-container {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.4rem;
+      transition: background 0.25s ease, transform 0.25s ease;
+      backdrop-filter: blur(4px);
+      border: 1.5px solid rgba(255, 255, 255, 0.25);
+    }
+    .project-icon-container i {
+      font-size: 1.6rem;
+    }
+    .project-card:hover .project-icon-container {
+      background: rgba(255, 255, 255, 0.25);
+      transform: scale(1.1);
+    }
+
     .project-title { font-size: 1rem; font-weight: 700; line-height: 1.4; }
-    .project-body { padding: 20px 24px 24px; }
+
+    /* 本文エリア: 薄いグラデーション背景 */
+    .project-body {
+      padding: 20px 24px 24px;
+      background: linear-gradient(
+        180deg,
+        rgba(248, 250, 252, 0.8) 0%,
+        var(--white) 40%
+      );
+    }
     .project-desc { font-size: 0.88rem; color: var(--gray-600); margin-bottom: 14px; line-height: 1.6; }
     .project-tags { margin-bottom: 16px; }
+
+    /* リンクボタン: アイコン右移動アニメーション */
     .project-link {
       display: inline-flex;
       align-items: center;
       gap: 6px;
       font-size: 0.85rem;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--blue);
       border: 1.5px solid var(--blue);
-      padding: 6px 16px;
+      padding: 8px 18px;
       border-radius: 999px;
-      transition: background 0.15s, color 0.15s;
+      transition: background 0.25s ease,
+                  color 0.25s ease,
+                  transform 0.25s ease,
+                  box-shadow 0.25s ease;
     }
-    .project-link:hover { background: var(--blue); color: var(--white); }
+    .project-link:hover {
+      background: var(--blue);
+      color: var(--white);
+      transform: translateX(2px);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    }
+    .project-link i {
+      transition: transform 0.25s ease;
+    }
+    .project-link:hover i {
+      transform: translateX(3px);
+    }
 
     /* ===== 経歴・資格 ===== */
     #career { background: var(--gray-50); }
@@ -749,7 +886,9 @@
       <!-- Google Apps Script -->
       <div class="skill-card" data-aos="fade-up" data-aos-delay="0">
         <div class="skill-icon">
-          <i class="devicon-google-plain colored" style="font-size:2.6rem;"></i>
+          <div class="skill-icon-container">
+            <i class="devicon-google-plain colored" style="font-size:2.6rem;"></i>
+          </div>
         </div>
         <div class="skill-name">Google Apps Script</div>
         <div class="skill-desc">Googleスプレッドシート・Docs・Gmail との連携。業務フロー全自動化が得意。</div>
@@ -758,7 +897,9 @@
       <!-- LINE Bot -->
       <div class="skill-card" data-aos="fade-up" data-aos-delay="60">
         <div class="skill-icon">
-          <i class="fas fa-comment-dots" style="color:#00B900;font-size:2.4rem;"></i>
+          <div class="skill-icon-container">
+            <i class="fas fa-comment-dots" style="color:#00B900;font-size:2.4rem;"></i>
+          </div>
         </div>
         <div class="skill-name">LINE Bot / LIFF</div>
         <div class="skill-desc">LINE Messaging API を活用した通知・管理システム。スマホから手軽に操作。</div>
@@ -767,7 +908,9 @@
       <!-- AI 連携 -->
       <div class="skill-card" data-aos="fade-up" data-aos-delay="120">
         <div class="skill-icon">
-          <i class="fas fa-brain" style="font-size:2.4rem;"></i>
+          <div class="skill-icon-container">
+            <i class="fas fa-brain" style="font-size:2.4rem;"></i>
+          </div>
         </div>
         <div class="skill-name">AI 連携</div>
         <div class="skill-desc">Gemini API / ChatGPT API を組み込んだ自動レポート・要約・判断補助。</div>
@@ -776,7 +919,9 @@
       <!-- Excel VBA -->
       <div class="skill-card" data-aos="fade-up" data-aos-delay="180">
         <div class="skill-icon">
-          <i class="fas fa-file-excel" style="color:#217346;font-size:2.4rem;"></i>
+          <div class="skill-icon-container">
+            <i class="fas fa-file-excel" style="color:#217346;font-size:2.4rem;"></i>
+          </div>
         </div>
         <div class="skill-name">Excel VBA</div>
         <div class="skill-desc">レポート自動生成・帳票作成・データ集計。既存 Excel 業務の自動化に対応。</div>
@@ -785,7 +930,9 @@
       <!-- React / TypeScript -->
       <div class="skill-card" data-aos="fade-up" data-aos-delay="240">
         <div class="skill-icon">
-          <i class="devicon-react-original colored" style="font-size:2.6rem;"></i>
+          <div class="skill-icon-container">
+            <i class="devicon-react-original colored" style="font-size:2.6rem;"></i>
+          </div>
         </div>
         <div class="skill-name">React / TypeScript</div>
         <div class="skill-desc">管理画面・社内ツール・Web アプリの開発。モダンなフロントエンドに対応。</div>
@@ -794,7 +941,9 @@
       <!-- セキュリティ -->
       <div class="skill-card" data-aos="fade-up" data-aos-delay="300">
         <div class="skill-icon">
-          <i class="fas fa-shield-halved" style="font-size:2.4rem;"></i>
+          <div class="skill-icon-container">
+            <i class="fas fa-shield-halved" style="font-size:2.4rem;"></i>
+          </div>
         </div>
         <div class="skill-name">セキュリティ</div>
         <div class="skill-desc">基本情報・応用情報取得済み。情報処理安全確保支援士取得に向けて勉強中。</div>
@@ -803,7 +952,9 @@
       <!-- Python -->
       <div class="skill-card" data-aos="fade-up" data-aos-delay="360">
         <div class="skill-icon">
-          <i class="devicon-python-plain colored" style="font-size:2.6rem;"></i>
+          <div class="skill-icon-container">
+            <i class="devicon-python-plain colored" style="font-size:2.6rem;"></i>
+          </div>
         </div>
         <div class="skill-name">Python / 自動化スクリプト</div>
         <div class="skill-desc">データ処理・スクリプト自動化・バッチ処理。業務効率化のためのPython開発に対応。</div>
@@ -812,7 +963,9 @@
       <!-- API連携 / Webhook -->
       <div class="skill-card" data-aos="fade-up" data-aos-delay="420">
         <div class="skill-icon">
-          <i class="fas fa-plug" style="font-size:2.4rem;"></i>
+          <div class="skill-icon-container">
+            <i class="fas fa-plug" style="font-size:2.4rem;"></i>
+          </div>
         </div>
         <div class="skill-name">API連携 / Webhook設計</div>
         <div class="skill-desc">REST API・Webhook・外部サービス連携。自前の自動化システムをゼロから構築。</div>
@@ -821,7 +974,9 @@
       <!-- Node.js / JavaScript -->
       <div class="skill-card" data-aos="fade-up" data-aos-delay="480">
         <div class="skill-icon">
-          <i class="devicon-nodejs-plain colored" style="font-size:2.6rem;"></i>
+          <div class="skill-icon-container">
+            <i class="devicon-nodejs-plain colored" style="font-size:2.6rem;"></i>
+          </div>
         </div>
         <div class="skill-name">Node.js / JavaScript</div>
         <div class="skill-desc">サーバーサイドJS・npmエコシステム。バックエンド処理・ツール開発に幅広く活用。</div>
@@ -830,7 +985,9 @@
       <!-- GitHub / CI/CD -->
       <div class="skill-card" data-aos="fade-up" data-aos-delay="540">
         <div class="skill-icon">
-          <i class="fab fa-github" style="color:#24292e;font-size:2.4rem;"></i>
+          <div class="skill-icon-container">
+            <i class="fab fa-github" style="color:#24292e;font-size:2.4rem;"></i>
+          </div>
         </div>
         <div class="skill-name">GitHub / CI/CD基礎</div>
         <div class="skill-desc">バージョン管理・GitHub Actions・自動デプロイ。チーム開発の基礎から継続的な改善まで対応。</div>
@@ -847,9 +1004,14 @@
     <p class="section-sub">実際に動くものを作り続けています。すべて GitHub で公開中。</p>
     <div class="projects-grid">
 
+      <!-- 1枚目: 整骨院向けバドミントン成績管理アプリ → fa-trophy (#F59E0B) -->
       <div class="project-card" data-aos="fade-up" data-aos-delay="0">
         <div class="project-header">
-          <div class="project-icon">🏸</div>
+          <div class="project-icon">
+            <div class="project-icon-container">
+              <i class="fas fa-trophy" style="color: #F59E0B;"></i>
+            </div>
+          </div>
           <div class="project-title">整骨院向け<br />バドミントン成績管理アプリ</div>
         </div>
         <div class="project-body">
@@ -863,9 +1025,14 @@
         </div>
       </div>
 
+      <!-- 2枚目: Googleフォーム送信→LINE通知 → fa-bell (#00B900) -->
       <div class="project-card" data-aos="fade-up" data-aos-delay="60">
         <div class="project-header">
-          <div class="project-icon">📬</div>
+          <div class="project-icon">
+            <div class="project-icon-container">
+              <i class="fas fa-bell" style="color: #00B900;"></i>
+            </div>
+          </div>
           <div class="project-title">Googleフォーム送信<br />→ LINE 通知 自動化</div>
         </div>
         <div class="project-body">
@@ -879,9 +1046,14 @@
         </div>
       </div>
 
+      <!-- 3枚目: GAS×Gemini API自動レポート → fa-robot (#2563EB) -->
       <div class="project-card" data-aos="fade-up" data-aos-delay="120">
         <div class="project-header">
-          <div class="project-icon">🤖</div>
+          <div class="project-icon">
+            <div class="project-icon-container">
+              <i class="fas fa-robot" style="color: #2563EB;"></i>
+            </div>
+          </div>
           <div class="project-title">GAS × Gemini API<br />自動レポート生成デモ</div>
         </div>
         <div class="project-body">
@@ -895,9 +1067,14 @@
         </div>
       </div>
 
+      <!-- 4枚目: 月次請求書PDF自動生成 → fa-file-invoice (#EA580C) -->
       <div class="project-card" data-aos="fade-up" data-aos-delay="0">
         <div class="project-header">
-          <div class="project-icon">🧾</div>
+          <div class="project-icon">
+            <div class="project-icon-container">
+              <i class="fas fa-file-invoice" style="color: #EA580C;"></i>
+            </div>
+          </div>
           <div class="project-title">月次請求書PDF<br />自動生成・Gmail 送信</div>
         </div>
         <div class="project-body">
@@ -911,9 +1088,14 @@
         </div>
       </div>
 
+      <!-- 5枚目: バドミントン練習記録・週次メール集計 → fa-chart-line (#0EA5E9) -->
       <div class="project-card" data-aos="fade-up" data-aos-delay="60">
         <div class="project-header">
-          <div class="project-icon">🏸</div>
+          <div class="project-icon">
+            <div class="project-icon-container">
+              <i class="fas fa-chart-line" style="color: #0EA5E9;"></i>
+            </div>
+          </div>
           <div class="project-title">バドミントン練習記録<br />・週次メール集計</div>
         </div>
         <div class="project-body">
@@ -927,9 +1109,14 @@
         </div>
       </div>
 
+      <!-- 6枚目: 家庭菜園管理 → fa-seedling (#84CC16) -->
       <div class="project-card" data-aos="fade-up" data-aos-delay="120">
         <div class="project-header">
-          <div class="project-icon">🥕</div>
+          <div class="project-icon">
+            <div class="project-icon-container">
+              <i class="fas fa-seedling" style="color: #84CC16;"></i>
+            </div>
+          </div>
           <div class="project-title">家庭菜園管理<br />野菜DB・月別作業カレンダー</div>
         </div>
         <div class="project-body">
@@ -943,9 +1130,14 @@
         </div>
       </div>
 
+      <!-- 7枚目: 英単語テストアプリ → fa-code (#8B5CF6) -->
       <div class="project-card" data-aos="fade-up" data-aos-delay="0">
         <div class="project-header">
-          <div class="project-icon">📚</div>
+          <div class="project-icon">
+            <div class="project-icon-container">
+              <i class="fas fa-code" style="color: #8B5CF6;"></i>
+            </div>
+          </div>
           <div class="project-title">英単語テストアプリ<br />（React / TypeScript）</div>
         </div>
         <div class="project-body">
