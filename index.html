@@ -20,6 +20,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 
+  <!-- ===== Font Awesome 6 ===== -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- ===== Devicons ===== -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+
   <!-- ===== AOS.js ===== -->
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
 
@@ -193,21 +199,75 @@
 
     /* ===== ヒーロー ===== */
     #hero {
-      background: linear-gradient(135deg, #0F2358 0%, #1E3A8A 30%, #2563EB 65%, #3B82F6 100%);
+      position: relative;
       color: var(--white);
       padding: 100px 20px 80px;
       text-align: center;
-      position: relative;
       overflow: hidden;
+      min-height: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
-    #hero::before {
+    /* Unsplash 背景画像 */
+    #hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: 0;
+    }
+    /* dim overlay - テキスト可読性確保 */
+    #hero-bg::after {
       content: '';
       position: absolute;
       inset: 0;
-      background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.08) 1px, transparent 0);
+      background: linear-gradient(
+        135deg,
+        rgba(10, 20, 60, 0.78) 0%,
+        rgba(15, 35, 88, 0.72) 40%,
+        rgba(37, 99, 235, 0.55) 100%
+      );
+    }
+    /* グリッドパターン overlay */
+    #hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 0);
       background-size: 32px 32px;
       pointer-events: none;
+      z-index: 1;
     }
+    /* ヒーロー内コンテンツ */
+    #hero > *:not(#hero-bg):not(#hero-grid) {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* アバターアイコン */
+    .hero-avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+      border: 3px solid rgba(255,255,255,0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      backdrop-filter: blur(4px);
+      font-size: 2.5rem;
+      color: var(--amber);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .hero-avatar:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 32px rgba(245,158,11,0.4);
+    }
+
     .hero-badge {
       display: inline-block;
       background: rgba(255,255,255,0.15);
@@ -219,6 +279,7 @@
       margin-bottom: 24px;
       letter-spacing: 0.5px;
       position: relative;
+      backdrop-filter: blur(4px);
     }
     .hero-title {
       font-size: clamp(1.8rem, 5vw, 3rem);
@@ -265,14 +326,20 @@
 
     /* ===== 波形セパレーター ===== */
     .wave-divider {
-      background: linear-gradient(135deg, #0F2358 0%, #1E3A8A 30%, #2563EB 65%, #3B82F6 100%);
+      background: transparent;
       line-height: 0;
       margin-top: -1px;
+      position: relative;
+      z-index: 2;
     }
     .wave-divider svg {
       display: block;
       width: 100%;
       height: 60px;
+    }
+    /* ヒーロー直後の波形はヒーローの暗い色に合わせる */
+    #hero + .wave-divider {
+      background: rgba(10,20,60,0);
     }
 
     /* ===== スキル ===== */
@@ -296,10 +363,28 @@
       transform: translateY(-4px);
       border-left-color: var(--amber);
     }
+    /* スキルアイコン: Font Awesome / Devicons 共通スタイル */
     .skill-icon {
-      font-size: 2.5rem;
+      font-size: 2.6rem;
       margin-bottom: 14px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
+    .skill-icon i {
+      /* Devicons は colored クラスを使う場合カラー自動、FAはここで色を設定 */
+      color: var(--blue);
+      transition: color 0.2s, transform 0.2s;
+    }
+    .skill-card:hover .skill-icon i {
+      color: var(--amber);
+      transform: scale(1.1);
+    }
+    /* Devicons colored はオリジナルカラーを保持させる */
+    .skill-icon .devicon-colored { color: inherit !important; }
+    .skill-card:hover .skill-icon .devicon-colored { transform: scale(1.1); }
+
     .skill-name {
       font-weight: 700;
       font-size: 1rem;
@@ -562,6 +647,20 @@
     .delay-1 { animation-delay: 0.1s; }
     .delay-2 { animation-delay: 0.2s; }
     .delay-3 { animation-delay: 0.3s; }
+
+    /* フローティングパーティクル (CSS純正) */
+    @keyframes floatParticle {
+      0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.4; }
+      33% { transform: translateY(-20px) translateX(10px) scale(1.1); opacity: 0.7; }
+      66% { transform: translateY(-10px) translateX(-8px) scale(0.9); opacity: 0.3; }
+    }
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      pointer-events: none;
+      animation: floatParticle linear infinite;
+    }
   </style>
 </head>
 <body>
@@ -587,7 +686,25 @@
 
 <!-- ===== ヒーロー ===== -->
 <section id="hero">
-  <div class="hero-badge">⚡ GAS × LINE × AI 自動化エンジニア</div>
+  <!-- 背景画像レイヤー (Unsplash: 宇宙・地球・テクノロジー系の暗い写真) -->
+  <div id="hero-bg"></div>
+  <!-- グリッドパターン -->
+  <div id="hero-grid"></div>
+
+  <!-- CSS パーティクル -->
+  <div class="particle" style="width:8px;height:8px;top:15%;left:10%;animation-duration:8s;animation-delay:0s;"></div>
+  <div class="particle" style="width:5px;height:5px;top:25%;left:85%;animation-duration:11s;animation-delay:2s;"></div>
+  <div class="particle" style="width:12px;height:12px;top:70%;left:20%;animation-duration:9s;animation-delay:4s;"></div>
+  <div class="particle" style="width:6px;height:6px;top:60%;left:75%;animation-duration:13s;animation-delay:1s;"></div>
+  <div class="particle" style="width:10px;height:10px;top:40%;left:50%;animation-duration:7s;animation-delay:3s;"></div>
+  <div class="particle" style="width:4px;height:4px;top:80%;left:90%;animation-duration:10s;animation-delay:5s;"></div>
+
+  <!-- アバターアイコン -->
+  <div class="hero-avatar fade-up">
+    <i class="fas fa-laptop-code"></i>
+  </div>
+
+  <div class="hero-badge"><i class="fas fa-bolt" style="color:var(--amber);margin-right:6px;"></i> GAS × LINE × AI 自動化エンジニア</div>
   <h1 class="hero-title fade-up">
     業務自動化で、<br /><span>あなたの時間を取り戻す</span>
   </h1>
@@ -616,7 +733,7 @@
 </section>
 
 <!-- ===== 波形セパレーター ===== -->
-<div class="wave-divider">
+<div class="wave-divider" style="background:linear-gradient(135deg,rgba(10,20,60,0.78) 0%,rgba(37,99,235,0.55) 100%);">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 60" preserveAspectRatio="none">
     <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#F9FAFB"/>
   </svg>
@@ -628,56 +745,97 @@
     <h2 class="section-title">スキルセット</h2>
     <p class="section-sub">中小企業の業務課題を解決する技術を組み合わせます</p>
     <div class="skills-grid">
+
+      <!-- Google Apps Script -->
       <div class="skill-card" data-aos="fade-up" data-aos-delay="0">
-        <div class="skill-icon">📊</div>
+        <div class="skill-icon">
+          <i class="devicon-google-plain colored" style="font-size:2.6rem;"></i>
+        </div>
         <div class="skill-name">Google Apps Script</div>
         <div class="skill-desc">Googleスプレッドシート・Docs・Gmail との連携。業務フロー全自動化が得意。</div>
       </div>
+
+      <!-- LINE Bot -->
       <div class="skill-card" data-aos="fade-up" data-aos-delay="60">
-        <div class="skill-icon">💬</div>
+        <div class="skill-icon">
+          <i class="fas fa-comment-dots" style="color:#00B900;font-size:2.4rem;"></i>
+        </div>
         <div class="skill-name">LINE Bot / LIFF</div>
         <div class="skill-desc">LINE Messaging API を活用した通知・管理システム。スマホから手軽に操作。</div>
       </div>
+
+      <!-- AI 連携 -->
       <div class="skill-card" data-aos="fade-up" data-aos-delay="120">
-        <div class="skill-icon">🤖</div>
+        <div class="skill-icon">
+          <i class="fas fa-brain" style="font-size:2.4rem;"></i>
+        </div>
         <div class="skill-name">AI 連携</div>
         <div class="skill-desc">Gemini API / ChatGPT API を組み込んだ自動レポート・要約・判断補助。</div>
       </div>
+
+      <!-- Excel VBA -->
       <div class="skill-card" data-aos="fade-up" data-aos-delay="180">
-        <div class="skill-icon">📝</div>
+        <div class="skill-icon">
+          <i class="fas fa-file-excel" style="color:#217346;font-size:2.4rem;"></i>
+        </div>
         <div class="skill-name">Excel VBA</div>
         <div class="skill-desc">レポート自動生成・帳票作成・データ集計。既存 Excel 業務の自動化に対応。</div>
       </div>
+
+      <!-- React / TypeScript -->
       <div class="skill-card" data-aos="fade-up" data-aos-delay="240">
-        <div class="skill-icon">⚛️</div>
+        <div class="skill-icon">
+          <i class="devicon-react-original colored" style="font-size:2.6rem;"></i>
+        </div>
         <div class="skill-name">React / TypeScript</div>
         <div class="skill-desc">管理画面・社内ツール・Web アプリの開発。モダンなフロントエンドに対応。</div>
       </div>
+
+      <!-- セキュリティ -->
       <div class="skill-card" data-aos="fade-up" data-aos-delay="300">
-        <div class="skill-icon">🔒</div>
+        <div class="skill-icon">
+          <i class="fas fa-shield-halved" style="font-size:2.4rem;"></i>
+        </div>
         <div class="skill-name">セキュリティ</div>
         <div class="skill-desc">基本情報・応用情報取得済み。情報処理安全確保支援士取得に向けて勉強中。</div>
       </div>
+
+      <!-- Python -->
       <div class="skill-card" data-aos="fade-up" data-aos-delay="360">
-        <div class="skill-icon">🐍</div>
+        <div class="skill-icon">
+          <i class="devicon-python-plain colored" style="font-size:2.6rem;"></i>
+        </div>
         <div class="skill-name">Python / 自動化スクリプト</div>
         <div class="skill-desc">データ処理・スクリプト自動化・バッチ処理。業務効率化のためのPython開発に対応。</div>
       </div>
+
+      <!-- API連携 / Webhook -->
       <div class="skill-card" data-aos="fade-up" data-aos-delay="420">
-        <div class="skill-icon">🔗</div>
+        <div class="skill-icon">
+          <i class="fas fa-plug" style="font-size:2.4rem;"></i>
+        </div>
         <div class="skill-name">API連携 / Webhook設計</div>
         <div class="skill-desc">REST API・Webhook・外部サービス連携。自前の自動化システムをゼロから構築。</div>
       </div>
+
+      <!-- Node.js / JavaScript -->
       <div class="skill-card" data-aos="fade-up" data-aos-delay="480">
-        <div class="skill-icon">🟢</div>
+        <div class="skill-icon">
+          <i class="devicon-nodejs-plain colored" style="font-size:2.6rem;"></i>
+        </div>
         <div class="skill-name">Node.js / JavaScript</div>
         <div class="skill-desc">サーバーサイドJS・npmエコシステム。バックエンド処理・ツール開発に幅広く活用。</div>
       </div>
+
+      <!-- GitHub / CI/CD -->
       <div class="skill-card" data-aos="fade-up" data-aos-delay="540">
-        <div class="skill-icon">🛠️</div>
+        <div class="skill-icon">
+          <i class="fab fa-github" style="color:#24292e;font-size:2.4rem;"></i>
+        </div>
         <div class="skill-name">GitHub / CI/CD基礎</div>
         <div class="skill-desc">バージョン管理・GitHub Actions・自動デプロイ。チーム開発の基礎から継続的な改善まで対応。</div>
       </div>
+
     </div>
   </div>
 </section>
@@ -700,7 +858,7 @@
             <span class="tag">GAS</span><span class="tag">LINE LIFF</span><span class="tag">スプレッドシート</span><span class="tag">AI支援開発</span>
           </div>
           <a href="https://github.com/hariku0212/geyama-gas-portfolio" class="project-link" target="_blank" rel="noopener">
-            ↗ GitHub で見る
+            <i class="fab fa-github"></i> GitHub で見る
           </a>
         </div>
       </div>
@@ -716,7 +874,7 @@
             <span class="tag">GAS</span><span class="tag">LINE Notify</span><span class="tag">Google Forms</span><span class="tag">AI支援開発</span>
           </div>
           <a href="https://github.com/hariku0212/portfolio-form-line-notifier" class="project-link" target="_blank" rel="noopener">
-            ↗ GitHub で見る
+            <i class="fab fa-github"></i> GitHub で見る
           </a>
         </div>
       </div>
@@ -732,7 +890,7 @@
             <span class="tag">GAS</span><span class="tag">Gemini API</span><span class="tag">AI</span><span class="tag">AI支援開発</span>
           </div>
           <a href="https://github.com/hariku0212/gas-ai-demo" class="project-link" target="_blank" rel="noopener">
-            ↗ GitHub で見る
+            <i class="fab fa-github"></i> GitHub で見る
           </a>
         </div>
       </div>
@@ -748,7 +906,7 @@
             <span class="tag">GAS</span><span class="tag">Gmail</span><span class="tag">PDF生成</span><span class="tag">AI支援開発</span>
           </div>
           <a href="https://github.com/hariku0212/portfolio-invoice-automation" class="project-link" target="_blank" rel="noopener">
-            ↗ GitHub で見る
+            <i class="fab fa-github"></i> GitHub で見る
           </a>
         </div>
       </div>
@@ -764,7 +922,7 @@
             <span class="tag">GAS</span><span class="tag">Chart</span><span class="tag">Gmail</span><span class="tag">AI支援開発</span>
           </div>
           <a href="https://github.com/hariku0212/portfolio-badminton-tracker" class="project-link" target="_blank" rel="noopener">
-            ↗ GitHub で見る
+            <i class="fab fa-github"></i> GitHub で見る
           </a>
         </div>
       </div>
@@ -780,7 +938,7 @@
             <span class="tag">GAS</span><span class="tag">スプレッドシート</span><span class="tag">カレンダー</span><span class="tag">AI支援開発</span>
           </div>
           <a href="https://github.com/hariku0212/portfolio-garden-tracker" class="project-link" target="_blank" rel="noopener">
-            ↗ GitHub で見る
+            <i class="fab fa-github"></i> GitHub で見る
           </a>
         </div>
       </div>
@@ -796,7 +954,7 @@
             <span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">SPA</span><span class="tag">AI支援開発</span>
           </div>
           <a href="https://github.com/hariku0212/vocab-app" class="project-link" target="_blank" rel="noopener">
-            ↗ GitHub で見る
+            <i class="fab fa-github"></i> GitHub で見る
           </a>
         </div>
       </div>
@@ -908,11 +1066,6 @@
     要件整理からお手伝いします。
   </p>
 
-  <!-- Formspree フォーム
-       TODO: hariku0212@gmail.com で https://formspree.io/ にアクセスし、
-             新規フォームを作成後、下記 action の YOUR_FORM_ID を置き換えること。
-             例: action="https://formspree.io/f/abcd1234"
-  -->
   <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
     <input type="text" name="name" placeholder="お名前" required />
     <input type="email" name="email" placeholder="メールアドレス" required />
@@ -924,21 +1077,21 @@
 
   <div class="contact-links">
     <a href="https://github.com/hariku0212" class="contact-btn contact-btn-github" target="_blank" rel="noopener">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+      <i class="fab fa-github"></i>
       GitHub プロフィール
     </a>
     <a href="mailto:hariku20010212@gmail.com" class="contact-btn contact-btn-mail">
-      ✉ メールで問い合わせ
+      <i class="fas fa-envelope"></i> メールで問い合わせ
     </a>
     <a href="tel:09039699616" class="contact-btn contact-btn-tel">
-      📞 09039699616
+      <i class="fas fa-phone"></i> 09039699616
     </a>
   </div>
 </section>
 
 <!-- ===== フッター ===== -->
 <footer>
-  <p>© 2026 hariku — Built with ❤️ and GAS</p>
+  <p>© 2026 hariku — Built with <i class="fas fa-heart" style="color:#E11D48;"></i> and GAS</p>
 </footer>
 
 <!-- ===== AOS.js 初期化 ===== -->
