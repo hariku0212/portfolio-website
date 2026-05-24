@@ -905,6 +905,17 @@
       justify-content: center;
       margin: 0 auto 20px;
     }
+    .photo-img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 3px solid rgba(37, 99, 235, 0.2);
+      box-shadow: 0 8px 32px rgba(37, 99, 235, 0.12);
+      display: block;
+      margin: 0 auto 20px;
+    }
     .about-photo .about-tags {
       display: flex;
       flex-wrap: wrap;
@@ -1548,10 +1559,7 @@
 
       <!-- 右: 顔写真エリア（現時点はプレースホルダー） -->
       <div class="about-photo" data-aos="fade-left">
-        <div class="photo-placeholder">
-          <!-- TODO: 顔写真ファイルが届いたら<img>タグに差し替える -->
-          <i class="fas fa-user" style="font-size:4rem; color:var(--blue);"></i>
-        </div>
+        <img src="assets/hariku_fig.jpg" alt="hariku" class="photo-img" />
         <div class="about-tags">
           <span class="tag">業務自動化</span>
           <span class="tag">GAS</span>
