@@ -47,21 +47,28 @@
       --white: #FFFFFF;
       --max-w: 1080px;
       --radius: 12px;
-      /* Fix2: project card header colors via CSS vars */
+      /* LINE ボタン専用カラー */
+      --line-green: #06C755;
+      --line-green-dark: #05A847;
+      /* Hero 背景グラデーション */
+      --hero-dark: #0F172A;
+      --hero-mid: #1E3A8A;
+      /* Before→After 表示カラー */
+      --before-bg: #FEF2F2;
+      --before-text: #991B1B;
+      --after-bg: #F0FDF4;
+      --after-text: #166534;
+      /* project card header colors via CSS vars */
       --proj-1-from: #1E3A8A;
       --proj-1-to:   #2563EB;
       --proj-2-from: #065F46;
       --proj-2-to:   #059669;
-      --proj-3-from: #7C3AED;
-      --proj-3-to:   #8B5CF6;
-      --proj-4-from: #9A3412;
-      --proj-4-to:   #EA580C;
+      --proj-3-from: #9A3412;
+      --proj-3-to:   #EA580C;
+      --proj-4-from: #7C3AED;
+      --proj-4-to:   #8B5CF6;
       --proj-5-from: #0E7490;
       --proj-5-to:   #0EA5E9;
-      --proj-6-from: #4D7C0F;
-      --proj-6-to:   #84CC16;
-      --proj-7-from: #881337;
-      --proj-7-to:   #E11D48;
     }
     html { scroll-behavior: smooth; }
     body {
@@ -88,10 +95,7 @@
       font-size: 0.95rem;
     }
 
-    /*
-     * ===== タグ デザイン強化 (v4) =====
-     * 変更理由: パディング増量・ボーダー追加でピル形状を洗練
-     */
+    /* ===== タグ ===== */
     .tag {
       display: inline-block;
       background: rgba(37, 99, 235, 0.08);
@@ -105,9 +109,7 @@
       letter-spacing: 0.2px;
       transition: background 0.2s ease, color 0.2s ease;
     }
-    .tag:hover {
-      background: rgba(37, 99, 235, 0.15);
-    }
+    .tag:hover { background: rgba(37, 99, 235, 0.15); }
 
     /* ===== カスタムスクロールバー ===== */
     ::-webkit-scrollbar { width: 6px; }
@@ -161,14 +163,14 @@
     }
     .nav-links a:hover { color: var(--blue); }
     .nav-cta {
-      background: var(--blue);
+      background: var(--line-green);
       color: var(--white) !important;
       padding: 8px 20px;
       border-radius: 999px;
       font-weight: 600 !important;
       transition: background 0.2s !important;
     }
-    .nav-cta:hover { background: var(--blue-dark) !important; color: var(--white) !important; }
+    .nav-cta:hover { background: var(--line-green-dark) !important; color: var(--white) !important; }
 
     /* ハンバーガーメニュー */
     .hamburger {
@@ -236,27 +238,12 @@
       align-items: center;
       justify-content: center;
     }
-    /* Unsplash 背景画像 */
+    /* Hero背景: 宇宙写真を削除してグラデーション */
     #hero-bg {
       position: absolute;
       inset: 0;
-      background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+      background: linear-gradient(135deg, var(--hero-dark) 0%, var(--hero-mid) 100%);
       z-index: 0;
-    }
-    /* dim overlay - テキスト可読性確保 */
-    #hero-bg::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        135deg,
-        rgba(10, 20, 60, 0.78) 0%,
-        rgba(15, 35, 88, 0.72) 40%,
-        rgba(37, 99, 235, 0.55) 100%
-      );
     }
     /* グリッドパターン overlay */
     #hero-grid {
@@ -338,6 +325,24 @@
     .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
     .btn-primary { background: var(--amber); color: #1a1a1a; }
     .btn-outline { background: transparent; border: 2px solid rgba(255,255,255,0.7); color: var(--white); }
+
+    /* LINEボタン */
+    .btn-line {
+      background: var(--line-green);
+      color: var(--white);
+      box-shadow: 0 4px 16px rgba(6, 199, 85, 0.4);
+      padding: 16px 36px;
+      font-size: 1.05rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-line:hover {
+      background: var(--line-green-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(6, 199, 85, 0.5);
+    }
+
     .hero-stats {
       display: flex;
       gap: 40px;
@@ -349,6 +354,12 @@
     .stat { text-align: center; }
     .stat-num { font-size: 2rem; font-weight: 900; color: var(--amber); }
     .stat-label { font-size: 0.8rem; opacity: 0.8; margin-top: 2px; }
+
+    /* モバイル: LINEボタン全幅 */
+    @media (max-width: 640px) {
+      .hero-buttons { flex-direction: column; align-items: stretch; padding: 0 20px; }
+      .hero-buttons .btn { text-align: center; justify-content: center; }
+    }
 
     /* ===== 波形セパレーター ===== */
     .wave-divider {
@@ -363,117 +374,167 @@
       width: 100%;
       height: 60px;
     }
-    /* ヒーロー直後の波形はヒーローの暗い色に合わせる */
-    #hero + .wave-divider {
-      background: rgba(10,20,60,0);
-    }
 
-    /*
-     * ===== スキルカード 全面リデザイン (v4) =====
-     *
-     * 【設計選定理由】Glassmorphism を採用
-     * 調査元: franwbu.com/blog/glassmorphism-in-web-design/ (2025)
-     *         natebal.com/glassmorphism-web-design/
-     * 選定理由:
-     * - スキルセクション背景が var(--gray-50) のため、半透明ガラス効果が最も映える
-     * - 2024-2025年ポートフォリオトレンド調査でGlassmorphismが最上位
-     * - ブラウザ対応95%以上（Chrome/Edge/Firefox/Safari全対応）
-     * - 既存カラーパレット（--blue/#2563EB, --amber/#F59E0B）のグラデーションと相性抜群
-     * - Gradient Border は白背景向きだが、gray-50背景ではガラス感の方が深みが出る
-     */
-    #skills { background: var(--gray-50); }
-    .skills-grid {
+    /* ===== Problem セクション ===== */
+    #problem { background: var(--white); }
+
+    .problem-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 36px;
     }
 
-    /* Glassmorphism スキルカード本体 */
-    .skill-card {
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.8);
-      border-radius: 16px;
-      padding: 32px 24px 28px;
+    .problem-card {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-left: 4px solid var(--gray-400);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      transition: border-left-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      cursor: default;
+    }
+    .problem-card:hover {
+      border-left-color: var(--blue);
+      transform: translateX(4px);
+      box-shadow: 0 4px 16px rgba(37, 99, 235, 0.08);
+    }
+    .problem-icon {
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+      background: rgba(37, 99, 235, 0.08);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--blue);
+      font-size: 1.2rem;
+    }
+    .problem-card p {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--gray-800);
+      line-height: 1.6;
+    }
+    .problem-card p span {
+      font-weight: 400;
+      color: var(--gray-600);
+    }
+
+    .problem-lead {
       text-align: center;
+      padding: 24px;
+      background: var(--blue-light);
+      border-radius: var(--radius);
+      font-size: 1.1rem;
+      color: var(--blue);
+    }
+
+    /* ===== Solution セクション ===== */
+    .solution-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    @media (max-width: 768px) {
+      .solution-grid { grid-template-columns: 1fr; }
+    }
+
+    .solution-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 16px;
+      padding: 32px 28px;
       position: relative;
       overflow: hidden;
-      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-                  box-shadow 0.3s ease,
-                  background 0.3s ease;
-      box-shadow: 0 4px 24px rgba(37, 99, 235, 0.08),
-                  0 1px 4px rgba(0, 0, 0, 0.04);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s;
+    }
+    .solution-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(37, 99, 235, 0.14);
+    }
+    .solution-card--featured {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 2px var(--blue);
     }
 
-    /* カード上部のカラーバー（グラデーション）*/
-    .skill-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--blue) 0%, var(--amber) 100%);
-      border-radius: 16px 16px 0 0;
+    .solution-number {
+      font-size: 3rem;
+      font-weight: 900;
+      color: rgba(37, 99, 235, 0.1);
+      line-height: 1;
+      margin-bottom: 16px;
+      letter-spacing: -2px;
     }
-
-    .skill-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 48px rgba(37, 99, 235, 0.18),
-                  0 8px 16px rgba(0, 0, 0, 0.06);
-      background: rgba(255, 255, 255, 0.9);
-    }
-
-    /* スキルアイコンラッパー */
-    .skill-icon {
+    .solution-icon {
+      width: 52px;
+      height: 52px;
+      background: rgba(37, 99, 235, 0.08);
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 18px;
+      color: var(--blue);
+      font-size: 1.5rem;
+      margin-bottom: 16px;
     }
-
-    /* スキルアイコンコンテナ（角丸背景付き）*/
-    .skill-icon-container {
-      width: 72px;
-      height: 72px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(245, 158, 11, 0.06) 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-                  background 0.3s ease,
-                  box-shadow 0.3s ease;
-      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.08);
+    .solution-card--featured .solution-icon {
+      background: var(--blue);
+      color: var(--white);
     }
-
-    .skill-card:hover .skill-icon-container {
-      transform: scale(1.15) rotate(-3deg);
-      background: linear-gradient(135deg, rgba(37, 99, 235, 0.15) 0%, rgba(245, 158, 11, 0.12) 100%);
-      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.16);
-    }
-
-    /* Devicons colored はオリジナルカラーを保持 */
-    .skill-icon-container .devicon-colored { color: inherit !important; }
-
-    /* スキル名・説明文 強化 */
-    .skill-name {
-      font-weight: 800;
+    .solution-title {
       font-size: 1.05rem;
-      margin-bottom: 8px;
+      font-weight: 700;
       color: var(--gray-800);
-      letter-spacing: -0.3px;
+      margin-bottom: 12px;
     }
-    .skill-desc { font-size: 0.85rem; color: var(--gray-600); line-height: 1.6; }
+    .solution-desc {
+      font-size: 0.88rem;
+      color: var(--gray-600);
+      line-height: 1.75;
+    }
+    .solution-desc strong { color: var(--gray-800); }
 
-    /*
-     * ===== 制作実績カード デザイン強化 (v4) =====
-     * - ホバー効果: translateY(-10px) scale(1.02) + 強化シャドウ
-     * - プロジェクトヘッダー: 下端に半楕円波形追加
-     * - 本文エリア: 薄いグラデーション背景
-     * - リンクボタン: アイコン右移動アニメーション追加
-     */
+    .solution-badge {
+      display: inline-block;
+      background: var(--blue);
+      color: var(--white);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-top: 16px;
+    }
+
+    /* 使用技術タグ エリア */
+    .solution-tech {
+      text-align: center;
+      padding: 28px;
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid var(--gray-200);
+    }
+    .solution-tech-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--gray-400);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+    .solution-tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    /* ===== 制作実績カード ===== */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -493,7 +554,7 @@
       transform: translateY(-10px) scale(1.02);
     }
 
-    /* プロジェクトヘッダー: 下端に半楕円波形 */
+    /* プロジェクトヘッダー */
     .project-header {
       padding: 24px 24px 20px;
       color: var(--white);
@@ -510,16 +571,14 @@
       border-radius: 50% 50% 0 0 / 100% 100% 0 0;
     }
 
-    /* プロジェクトカード個別カラー（CSS変数管理 v4 Fix2） */
+    /* プロジェクトカード個別カラー */
     .project-card:nth-child(1) .project-header { background: linear-gradient(135deg, var(--proj-1-from) 0%, var(--proj-1-to) 100%); }
     .project-card:nth-child(2) .project-header { background: linear-gradient(135deg, var(--proj-2-from) 0%, var(--proj-2-to) 100%); }
     .project-card:nth-child(3) .project-header { background: linear-gradient(135deg, var(--proj-3-from) 0%, var(--proj-3-to) 100%); }
     .project-card:nth-child(4) .project-header { background: linear-gradient(135deg, var(--proj-4-from) 0%, var(--proj-4-to) 100%); }
     .project-card:nth-child(5) .project-header { background: linear-gradient(135deg, var(--proj-5-from) 0%, var(--proj-5-to) 100%); }
-    .project-card:nth-child(6) .project-header { background: linear-gradient(135deg, var(--proj-6-from) 0%, var(--proj-6-to) 100%); }
-    .project-card:nth-child(7) .project-header { background: linear-gradient(135deg, var(--proj-7-from) 0%, var(--proj-7-to) 100%); }
 
-    /* プロジェクトアイコン: Font Awesomeアイコンコンテナ */
+    /* プロジェクトアイコン */
     .project-icon {
       display: flex;
       align-items: center;
@@ -539,9 +598,7 @@
       backdrop-filter: blur(4px);
       border: 1.5px solid rgba(255, 255, 255, 0.25);
     }
-    .project-icon-container i {
-      font-size: 1.6rem;
-    }
+    .project-icon-container i { font-size: 1.6rem; }
     .project-card:hover .project-icon-container {
       background: rgba(255, 255, 255, 0.25);
       transform: scale(1.1);
@@ -549,7 +606,7 @@
 
     .project-title { font-size: 1rem; font-weight: 700; line-height: 1.4; }
 
-    /* 本文エリア: 薄いグラデーション背景 */
+    /* 本文エリア */
     .project-body {
       padding: 20px 24px 24px;
       background: linear-gradient(
@@ -558,10 +615,9 @@
         var(--white) 40%
       );
     }
-    .project-desc { font-size: 0.85rem; color: var(--gray-600); margin-bottom: 14px; line-height: 1.6; }
     .project-tags { margin-bottom: 16px; }
 
-    /* リンクボタン: アイコン右移動アニメーション */
+    /* リンクボタン */
     .project-link {
       display: inline-flex;
       align-items: center;
@@ -583,75 +639,142 @@
       transform: translateX(2px);
       box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
     }
-    .project-link i {
-      transition: transform 0.25s ease;
+    .project-link i { transition: transform 0.25s ease; }
+    .project-link:hover i { transform: translateX(3px); }
+
+    /* ===== Before→After ブロック ===== */
+    .before-after {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 16px;
     }
-    .project-link:hover i {
-      transform: translateX(3px);
+    .before-block, .after-block {
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+    .before-block {
+      background: var(--before-bg);
+      border-left: 3px solid var(--before-text);
+    }
+    .after-block {
+      background: var(--after-bg);
+      border-left: 3px solid var(--after-text);
+    }
+    .before-label, .after-label {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 1px 8px;
+      border-radius: 4px;
+      margin-bottom: 4px;
+    }
+    .before-label {
+      background: var(--before-text);
+      color: var(--white);
+    }
+    .after-label {
+      background: var(--after-text);
+      color: var(--white);
     }
 
-    /* ===== 経歴・資格 ===== */
-    #career { background: var(--gray-50); }
-    .career-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
+    /* カードアクションボタン群 */
+    .project-card-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
     }
-    @media (max-width: 640px) { .career-grid { grid-template-columns: 1fr; } }
-    .career-box {
+    .project-ask-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--white);
+      background: var(--blue);
+      padding: 8px 16px;
+      border-radius: 999px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .project-ask-btn:hover {
+      background: var(--blue-dark);
+      transform: translateY(-1px);
+    }
+
+    /* ===== Process セクション ===== */
+    .process-grid {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .process-step {
+      flex: 1;
+      min-width: 200px;
+      max-width: 240px;
       background: var(--white);
       border: 1px solid var(--gray-200);
       border-radius: var(--radius);
-      padding: 28px;
+      padding: 28px 20px;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-    .career-box-title {
-      font-size: 0.9rem;
+    .process-step:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.1);
+    }
+
+    .process-number {
+      font-size: 0.72rem;
       font-weight: 700;
       color: var(--blue);
-      text-transform: uppercase;
       letter-spacing: 1px;
-      margin-bottom: 20px;
-      padding-bottom: 10px;
-      border-bottom: 2px solid var(--blue-light);
+      margin-bottom: 12px;
     }
-    .timeline { list-style: none; }
-    .timeline li {
-      position: relative;
-      padding-left: 20px;
-      margin-bottom: 18px;
-      font-size: 0.9rem;
-    }
-    .timeline li::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 8px;
-      width: 8px; height: 8px;
+    .process-icon {
+      width: 52px;
+      height: 52px;
+      background: rgba(37, 99, 235, 0.08);
       border-radius: 50%;
-      background: var(--blue);
-    }
-    .timeline-year { font-size: 0.75rem; color: var(--gray-400); margin-bottom: 2px; }
-    .timeline-text { font-weight: 600; color: var(--gray-800); }
-    .cert-list { list-style: none; }
-    .cert-list li {
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 10px 0;
-      border-bottom: 1px solid var(--gray-100);
-      font-size: 0.9rem;
-    }
-    .cert-list li:last-child { border-bottom: none; }
-    .cert-badge {
-      background: var(--blue-light);
+      justify-content: center;
       color: var(--blue);
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 2px 10px;
-      border-radius: 999px;
-      white-space: nowrap;
+      font-size: 1.4rem;
+      margin: 0 auto 14px;
     }
-    .cert-badge.amber { background: #FFFBEB; color: var(--amber-dark); }
-    .cert-badge.studying { background: #F0FDF4; color: #16A34A; }
+    .process-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--gray-800);
+      margin-bottom: 8px;
+    }
+    .process-desc {
+      font-size: 0.83rem;
+      color: var(--gray-600);
+      line-height: 1.7;
+    }
+    .process-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gray-400);
+      font-size: 1.2rem;
+      padding-top: 60px;
+      flex-shrink: 0;
+    }
+
+    /* モバイル: 矢印を非表示にして縦並び */
+    @media (max-width: 640px) {
+      .process-grid { flex-direction: column; align-items: center; }
+      .process-step { max-width: 100%; width: 100%; }
+      .process-arrow { display: none; }
+    }
 
     /* ===== 料金 ===== */
     .pricing-grid {
@@ -705,6 +828,103 @@
       color: var(--gray-400);
       margin-top: 8px;
     }
+    .price-for {
+      font-size: 0.82rem;
+      color: var(--gray-600);
+      line-height: 1.6;
+      padding: 12px 14px;
+      background: var(--blue-light);
+      border-radius: 8px;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    /* ===== About セクション ===== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 48px;
+      align-items: start;
+    }
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .about-photo { order: -1; text-align: center; }
+    }
+
+    .about-intro {
+      font-size: 0.95rem;
+      color: var(--gray-600);
+      line-height: 1.8;
+    }
+    .about-section-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 24px 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--blue-light);
+    }
+
+    .photo-placeholder {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: var(--gray-100);
+      border: 2px solid var(--gray-200);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .about-photo .about-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    /* タイムライン */
+    .timeline { list-style: none; }
+    .timeline li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 18px;
+      font-size: 0.9rem;
+    }
+    .timeline li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 8px;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--blue);
+    }
+    .timeline-year { font-size: 0.75rem; color: var(--gray-400); margin-bottom: 2px; }
+    .timeline-text { font-weight: 600; color: var(--gray-800); }
+
+    /* 資格リスト */
+    .cert-list { list-style: none; }
+    .cert-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--gray-100);
+      font-size: 0.9rem;
+    }
+    .cert-list li:last-child { border-bottom: none; }
+    .cert-badge {
+      background: var(--blue-light);
+      color: var(--blue);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .cert-badge.studying { background: #F0FDF4; color: #16A34A; }
 
     /* ===== お問い合わせ ===== */
     #contact {
@@ -716,44 +936,15 @@
     #contact .section-title { color: var(--white); }
     #contact .section-sub { color: rgba(255,255,255,0.8); }
 
-    /* フォーム */
-    .contact-form {
-      max-width: 520px;
-      margin: 0 auto 36px;
-      text-align: left;
+    .contact-main-cta {
+      margin: 0 auto 32px;
+      text-align: center;
     }
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 12px 16px;
-      border: none;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      font-family: inherit;
-      margin-bottom: 12px;
-      background: rgba(255,255,255,0.12);
-      color: var(--white);
-      outline: none;
-      transition: background 0.2s;
-    }
-    .contact-form input::placeholder,
-    .contact-form textarea::placeholder { color: rgba(255,255,255,0.55); }
-    .contact-form input:focus,
-    .contact-form textarea:focus { background: rgba(255,255,255,0.2); }
-    .contact-form textarea { resize: vertical; min-height: 120px; }
-    .contact-form button {
-      width: 100%;
-      padding: 14px;
-      border: none;
+    .contact-btn-line {
+      font-size: 1.2rem;
+      padding: 20px 52px;
       border-radius: 999px;
-      background: var(--amber);
-      color: #1a1a1a;
-      font-weight: 700;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.15s;
     }
-    .contact-form button:hover { background: var(--amber-dark); transform: translateY(-2px); }
 
     .contact-divider {
       color: rgba(255,255,255,0.5);
@@ -777,7 +968,6 @@
       transition: transform 0.15s, box-shadow 0.15s;
     }
     .contact-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
-    .contact-btn-github { background: #24292e; color: var(--white); }
     .contact-btn-mail { background: var(--amber); color: #1a1a1a; }
     .contact-btn-tel { background: rgba(255,255,255,0.15); color: var(--white); border: 1.5px solid rgba(255,255,255,0.4); }
 
@@ -799,20 +989,6 @@
     .delay-1 { animation-delay: 0.1s; }
     .delay-2 { animation-delay: 0.2s; }
     .delay-3 { animation-delay: 0.3s; }
-
-    /* フローティングパーティクル (CSS純正) */
-    @keyframes floatParticle {
-      0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.4; }
-      33% { transform: translateY(-20px) translateX(10px) scale(1.1); opacity: 0.7; }
-      66% { transform: translateY(-10px) translateX(-8px) scale(0.9); opacity: 0.3; }
-    }
-    .particle {
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.15);
-      pointer-events: none;
-      animation: floatParticle linear infinite;
-    }
   </style>
 </head>
 <body>
@@ -827,47 +1003,59 @@
       <span></span>
     </button>
     <ul class="nav-links" id="nav-links">
-      <li><a href="#skills">スキル</a></li>
+      <li><a href="#problem">お悩み</a></li>
+      <li><a href="#solution">解決策</a></li>
       <li><a href="#projects">実績</a></li>
-      <li><a href="#career">経歴</a></li>
       <li><a href="#pricing">料金</a></li>
-      <li><a href="#contact" class="nav-cta">お問い合わせ</a></li>
+      <li><a href="#contact" class="nav-cta">LINEで相談</a></li>
     </ul>
   </nav>
 </header>
 
 <!-- ===== ヒーロー ===== -->
 <section id="hero">
-  <!-- 背景画像レイヤー (Unsplash: 宇宙・地球・テクノロジー系の暗い写真) -->
+  <!-- 背景: グラデーション（宇宙写真を削除） -->
   <div id="hero-bg"></div>
-  <!-- グリッドパターン -->
+  <!-- グリッドパターン（維持） -->
   <div id="hero-grid"></div>
+  <!-- パーティクルdivは削除 -->
 
-  <!-- CSS パーティクル -->
-  <div class="particle" style="width:8px;height:8px;top:15%;left:10%;animation-duration:8s;animation-delay:0s;"></div>
-  <div class="particle" style="width:5px;height:5px;top:25%;left:85%;animation-duration:11s;animation-delay:2s;"></div>
-  <div class="particle" style="width:12px;height:12px;top:70%;left:20%;animation-duration:9s;animation-delay:4s;"></div>
-  <div class="particle" style="width:6px;height:6px;top:60%;left:75%;animation-duration:13s;animation-delay:1s;"></div>
-  <div class="particle" style="width:10px;height:10px;top:40%;left:50%;animation-duration:7s;animation-delay:3s;"></div>
-  <div class="particle" style="width:4px;height:4px;top:80%;left:90%;animation-duration:10s;animation-delay:5s;"></div>
+  <!-- 「初回相談無料」バッジ -->
+  <div class="hero-badge">
+    <i class="fas fa-gift" style="color:var(--amber);margin-right:6px;"></i>
+    初回相談無料 · GAS × LINE × AI 自動化
+  </div>
 
-  <!-- アバターアイコン -->
+  <!-- アバターアイコン（維持） -->
   <div class="hero-avatar fade-up">
     <i class="fas fa-laptop-code"></i>
   </div>
 
-  <div class="hero-badge"><i class="fas fa-bolt" style="color:var(--amber);margin-right:6px;"></i> GAS × LINE × AI 自動化エンジニア</div>
+  <!-- 課題解決型キャッチコピー -->
   <h1 class="hero-title fade-up">
-    業務自動化で、<br /><span>あなたの時間を取り戻す</span>
+    繰り返しの事務作業、<br /><span>まだ手でやってますか？</span>
   </h1>
+
+  <!-- サブコピー（具体的な業務例を含む） -->
   <p class="hero-sub fade-up delay-1">
-    GAS × LINE × AI で中小企業の効率化をサポート。<br />
-    繰り返し作業をゼロに。あなたはコア業務に集中してください。
+    GAS・LINE・AIを使って、毎日の面倒な作業を自動化します。<br />
+    エクセル集計、LINE通知、請求書作成——<br />
+    「これ、自動化できますか？」まず気軽に聞いてください。
   </p>
+
+  <!-- CTAボタン群（LINEを最優先に） -->
   <div class="hero-buttons fade-up delay-2">
-    <a href="#projects" class="btn btn-primary">実績を見る</a>
-    <a href="#contact" class="btn btn-outline">お問い合わせ</a>
+    <!-- LINEボタン（ファーストビュー最優先CTA） -->
+    <!-- TODO: LINEのURLをキャプテンが後日設定 -->
+    <a href="#" class="btn btn-line">
+      <i class="fab fa-line"></i> LINEで相談する（無料）
+    </a>
+    <a href="mailto:hariku20010212@gmail.com" class="btn btn-outline">
+      <i class="fas fa-envelope"></i> メールで相談する
+    </a>
   </div>
+
+  <!-- 実績数値 -->
   <div class="hero-stats fade-up delay-3">
     <div class="stat">
       <div class="stat-num">7+</div>
@@ -878,148 +1066,132 @@
       <div class="stat-label">スポット対応</div>
     </div>
     <div class="stat">
-      <div class="stat-num">5万〜</div>
-      <div class="stat-label">月額サポート</div>
+      <div class="stat-num">無料</div>
+      <div class="stat-label">初回相談</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">平日夜・土日</div>
+      <div class="stat-label">対応可能</div>
     </div>
   </div>
 </section>
 
 <!-- ===== 波形セパレーター ===== -->
-<div class="wave-divider" style="background:linear-gradient(135deg,rgba(10,20,60,0.78) 0%,rgba(37,99,235,0.55) 100%);">
+<div class="wave-divider" style="background:linear-gradient(135deg,var(--hero-dark) 0%,var(--hero-mid) 100%);">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 60" preserveAspectRatio="none">
-    <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#F9FAFB"/>
+    <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#FFFFFF"/>
   </svg>
 </div>
 
-<!-- ===== スキル ===== -->
-<section id="skills" class="section">
+<!-- ===== Problem（お悩みチェックリスト） ===== -->
+<section id="problem" class="section">
   <div class="container">
-    <h2 class="section-title">スキルセット</h2>
-    <p class="section-sub">中小企業の業務課題を解決する技術を組み合わせます</p>
-    <div class="skills-grid">
+    <h2 class="section-title">こんなお悩みありませんか？</h2>
+    <p class="section-sub">中小企業・個人事業主の方からよくいただくご相談です</p>
+    <div class="problem-grid">
 
-      <!-- Google Apps Script -->
-      <div class="skill-card" data-aos="fade-up" data-aos-delay="0">
-        <div class="skill-icon">
-          <div class="skill-icon-container">
-            <i class="devicon-google-plain colored" style="font-size:2.6rem;"></i>
-          </div>
-        </div>
-        <div class="skill-name">Google Apps Script</div>
-        <div class="skill-desc">Googleスプレッドシート・Docs・Gmail との連携。業務フロー全自動化が得意。</div>
+      <div class="problem-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="problem-icon"><i class="fas fa-rotate"></i></div>
+        <p>毎月同じ作業を手でやっている<br /><span>（集計・請求書作成・メール送信など）</span></p>
       </div>
 
-      <!-- LINE Bot -->
-      <div class="skill-card" data-aos="fade-up" data-aos-delay="60">
-        <div class="skill-icon">
-          <div class="skill-icon-container">
-            <i class="fas fa-comment-dots" style="color:#00B900;font-size:2.4rem;"></i>
-          </div>
-        </div>
-        <div class="skill-name">LINE Bot / LIFF</div>
-        <div class="skill-desc">LINE Messaging API を活用した通知・管理システム。スマホから手軽に操作。</div>
+      <div class="problem-card" data-aos="fade-up" data-aos-delay="60">
+        <div class="problem-icon"><i class="fab fa-line"></i></div>
+        <p>LINEやGoogleフォームを使っているが、<br /><span>対応が手間になっている</span></p>
       </div>
 
-      <!-- AI 連携 [Fix1: color: var(--blue) 追加] -->
-      <div class="skill-card" data-aos="fade-up" data-aos-delay="120">
-        <div class="skill-icon">
-          <div class="skill-icon-container">
-            <i class="fas fa-brain" style="color: var(--blue); font-size:2.4rem;"></i>
-          </div>
-        </div>
-        <div class="skill-name">AI 連携</div>
-        <div class="skill-desc">Gemini API / ChatGPT API を組み込んだ自動レポート・要約・判断補助。</div>
+      <div class="problem-card" data-aos="fade-up" data-aos-delay="120">
+        <div class="problem-icon"><i class="fas fa-file-excel"></i></div>
+        <p>Excelをいじるたびに<br /><span>時間がかかってしまう</span></p>
       </div>
 
-      <!-- Excel VBA -->
-      <div class="skill-card" data-aos="fade-up" data-aos-delay="180">
-        <div class="skill-icon">
-          <div class="skill-icon-container">
-            <i class="fas fa-file-excel" style="color:#217346;font-size:2.4rem;"></i>
-          </div>
-        </div>
-        <div class="skill-name">Excel VBA</div>
-        <div class="skill-desc">レポート自動生成・帳票作成・データ集計。既存 Excel 業務の自動化に対応。</div>
+      <div class="problem-card" data-aos="fade-up" data-aos-delay="180">
+        <div class="problem-icon"><i class="fas fa-circle-question"></i></div>
+        <p>「自動化したいけど、<br /><span>どう頼めばいいかわからない」</span></p>
       </div>
 
-      <!-- React / TypeScript -->
-      <div class="skill-card" data-aos="fade-up" data-aos-delay="240">
-        <div class="skill-icon">
-          <div class="skill-icon-container">
-            <i class="devicon-react-original colored" style="font-size:2.6rem;"></i>
-          </div>
-        </div>
-        <div class="skill-name">React / TypeScript</div>
-        <div class="skill-desc">管理画面・社内ツール・Web アプリの開発。モダンなフロントエンドに対応。</div>
+      <div class="problem-card" data-aos="fade-up" data-aos-delay="240">
+        <div class="problem-icon"><i class="fas fa-yen-sign"></i></div>
+        <p>システム会社に頼むと高そうで<br /><span>相談しにくい</span></p>
       </div>
 
-      <!-- セキュリティ [Fix1: color: var(--blue) 追加] -->
-      <div class="skill-card" data-aos="fade-up" data-aos-delay="300">
-        <div class="skill-icon">
-          <div class="skill-icon-container">
-            <i class="fas fa-shield-halved" style="color: var(--blue); font-size:2.4rem;"></i>
-          </div>
-        </div>
-        <div class="skill-name">セキュリティ</div>
-        <div class="skill-desc">基本情報・応用情報取得済み。情報処理安全確保支援士取得に向けて勉強中。</div>
-      </div>
-
-      <!-- Python -->
-      <div class="skill-card" data-aos="fade-up" data-aos-delay="360">
-        <div class="skill-icon">
-          <div class="skill-icon-container">
-            <i class="devicon-python-plain colored" style="font-size:2.6rem;"></i>
-          </div>
-        </div>
-        <div class="skill-name">Python / 自動化スクリプト</div>
-        <div class="skill-desc">データ処理・スクリプト自動化・バッチ処理。業務効率化のためのPython開発に対応。</div>
-      </div>
-
-      <!-- API連携 / Webhook [Fix1: color: var(--blue) 追加] -->
-      <div class="skill-card" data-aos="fade-up" data-aos-delay="420">
-        <div class="skill-icon">
-          <div class="skill-icon-container">
-            <i class="fas fa-plug" style="color: var(--blue); font-size:2.4rem;"></i>
-          </div>
-        </div>
-        <div class="skill-name">API連携 / Webhook設計</div>
-        <div class="skill-desc">REST API・Webhook・外部サービス連携。自前の自動化システムをゼロから構築。</div>
-      </div>
-
-      <!-- Node.js / JavaScript -->
-      <div class="skill-card" data-aos="fade-up" data-aos-delay="480">
-        <div class="skill-icon">
-          <div class="skill-icon-container">
-            <i class="devicon-nodejs-plain colored" style="font-size:2.6rem;"></i>
-          </div>
-        </div>
-        <div class="skill-name">Node.js / JavaScript</div>
-        <div class="skill-desc">サーバーサイドJS・npmエコシステム。バックエンド処理・ツール開発に幅広く活用。</div>
-      </div>
-
-      <!-- GitHub / CI/CD -->
-      <div class="skill-card" data-aos="fade-up" data-aos-delay="540">
-        <div class="skill-icon">
-          <div class="skill-icon-container">
-            <i class="fab fa-github" style="color:#24292e;font-size:2.4rem;"></i>
-          </div>
-        </div>
-        <div class="skill-name">GitHub / CI/CD基礎</div>
-        <div class="skill-desc">バージョン管理・GitHub Actions・自動デプロイ。チーム開発の基礎から継続的な改善まで対応。</div>
-      </div>
-
+    </div>
+    <!-- セクション末尾のリード文 -->
+    <div class="problem-lead" data-aos="fade-up">
+      <p><strong>→ hariku がそれを解決します。</strong></p>
     </div>
   </div>
 </section>
 
-<!-- ===== 実績 ===== -->
+<!-- ===== Solution（解決アプローチ） ===== -->
+<section id="solution" class="section" style="background: var(--gray-50);">
+  <div class="container">
+    <h2 class="section-title">hariku の解決アプローチ</h2>
+    <p class="section-sub">大がかりなシステムは不要。今使っているツールをそのまま活かして、手間だけ減らします。</p>
+
+    <!-- ベントグリッドレイアウト: 3カラム -->
+    <div class="solution-grid">
+
+      <div class="solution-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="solution-number">01</div>
+        <div class="solution-icon"><i class="fas fa-magnifying-glass"></i></div>
+        <h3 class="solution-title">現状の確認・整理</h3>
+        <p class="solution-desc">
+          まずヒアリングで「どこで時間が取られているか」を確認します。
+          エクセル・Google系・LINEなど、今使っているツールをそのまま活かせるか判断。
+          <strong>余計なものは導入しません。</strong>
+        </p>
+      </div>
+
+      <div class="solution-card solution-card--featured" data-aos="fade-up" data-aos-delay="80">
+        <div class="solution-number">02</div>
+        <div class="solution-icon"><i class="fas fa-bolt"></i></div>
+        <h3 class="solution-title">小さく・すぐ動くものを作る</h3>
+        <p class="solution-desc">
+          大がかりなシステムではなく、GAS・LINE Bot・AI連携で
+          「今の業務フローを壊さず、手間だけ減らす」ツールを優先します。
+          <strong>最短1週間で動くものを届けます。</strong>
+        </p>
+        <div class="solution-badge">最短1週間</div>
+      </div>
+
+      <div class="solution-card" data-aos="fade-up" data-aos-delay="160">
+        <div class="solution-number">03</div>
+        <div class="solution-icon"><i class="fas fa-check-circle"></i></div>
+        <h3 class="solution-title">使えるか確認してから本番へ</h3>
+        <p class="solution-desc">
+          実際に使ってみてもらい、修正・改善を繰り返します。
+          「難しくて使えない」にならないよう、
+          <strong>操作が簡単なものを設計します。</strong>
+        </p>
+      </div>
+
+    </div>
+
+    <!-- 使用技術タグ（スキルセクションの代替） -->
+    <div class="solution-tech" data-aos="fade-up">
+      <p class="solution-tech-label">使用技術</p>
+      <div class="solution-tech-tags">
+        <span class="tag">Google Apps Script</span>
+        <span class="tag">LINE Bot / LIFF</span>
+        <span class="tag">Gemini AI</span>
+        <span class="tag">Excel VBA</span>
+        <span class="tag">React / TypeScript</span>
+        <span class="tag">Python</span>
+        <span class="tag">API連携 / Webhook</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 制作実績 ===== -->
 <section id="projects" class="section">
   <div class="container">
     <h2 class="section-title">制作実績</h2>
-    <p class="section-sub">実際に動くものを作り続けています。すべて GitHub で公開中。</p>
+    <p class="section-sub">「こんな作業を自動化したい」に似たケースがあるかチェックしてみてください。</p>
     <div class="projects-grid">
 
-      <!-- 1枚目: 整骨院向けバドミントン成績管理アプリ → fa-trophy (#F59E0B) -->
+      <!-- Case 1: バドミントン成績管理 -->
       <div class="project-card" data-aos="fade-up" data-aos-delay="0">
         <div class="project-header">
           <div class="project-icon">
@@ -1027,20 +1199,32 @@
               <i class="fas fa-trophy" style="color: #F59E0B;"></i>
             </div>
           </div>
-          <div class="project-title">整骨院向け<br />バドミントン成績管理アプリ</div>
+          <div class="project-title">整骨院向け<br />バドミントン成績管理</div>
         </div>
         <div class="project-body">
-          <p class="project-desc">GAS × LINE × LIFF を組み合わせた成績管理システム。スマホから入力・集計・通知まで完結。</p>
-          <div class="project-tags">
-            <span class="tag">GAS</span><span class="tag">LINE LIFF</span><span class="tag">スプレッドシート</span><span class="tag">AI支援開発</span>
+          <div class="before-after">
+            <div class="before-block">
+              <span class="before-label">Before</span>
+              <p>練習のたびに手書きで集計・LINEでコピペ送信</p>
+            </div>
+            <div class="after-block">
+              <span class="after-label">After</span>
+              <p>スマホで入力するだけ。自動集計・自動通知（週3時間 → ほぼ0）</p>
+            </div>
           </div>
-          <a href="https://github.com/hariku0212/geyama-gas-portfolio" class="project-link" target="_blank" rel="noopener">
-            <i class="fab fa-github"></i> GitHub で見る
-          </a>
+          <div class="project-tags">
+            <span class="tag">GAS</span><span class="tag">LINE LIFF</span><span class="tag">スプレッドシート</span>
+          </div>
+          <div class="project-card-actions">
+            <a href="https://github.com/hariku0212/geyama-gas-portfolio" class="project-link" target="_blank" rel="noopener">
+              <i class="fab fa-github"></i> GitHubで見る
+            </a>
+            <a href="#contact" class="project-ask-btn">詳しく聞く</a>
+          </div>
         </div>
       </div>
 
-      <!-- 2枚目: Googleフォーム送信→LINE通知 → fa-bell (#00B900) -->
+      <!-- Case 2: Googleフォーム→LINE通知 -->
       <div class="project-card" data-aos="fade-up" data-aos-delay="60">
         <div class="project-header">
           <div class="project-icon">
@@ -1048,62 +1232,98 @@
               <i class="fas fa-bell" style="color: #00B900;"></i>
             </div>
           </div>
-          <div class="project-title">Googleフォーム送信<br />→ LINE 通知 自動化</div>
+          <div class="project-title">フォーム回答<br />→ LINE自動通知</div>
         </div>
         <div class="project-body">
-          <p class="project-desc">フォーム回答を即座に LINE グループへ通知。問い合わせ対応・アンケート集計の時間を削減。</p>
-          <div class="project-tags">
-            <span class="tag">GAS</span><span class="tag">LINE Notify</span><span class="tag">Google Forms</span><span class="tag">AI支援開発</span>
-          </div>
-          <a href="https://github.com/hariku0212/portfolio-form-line-notifier" class="project-link" target="_blank" rel="noopener">
-            <i class="fab fa-github"></i> GitHub で見る
-          </a>
-        </div>
-      </div>
-
-      <!-- 3枚目: GAS×Gemini API自動レポート → fa-robot (#2563EB) -->
-      <div class="project-card" data-aos="fade-up" data-aos-delay="120">
-        <div class="project-header">
-          <div class="project-icon">
-            <div class="project-icon-container">
-              <i class="fas fa-robot" style="color: #2563EB;"></i>
+          <div class="before-after">
+            <div class="before-block">
+              <span class="before-label">Before</span>
+              <p>フォーム回答が来るたびにメールを確認して転記</p>
+            </div>
+            <div class="after-block">
+              <span class="after-label">After</span>
+              <p>送信と同時にLINEグループへ自動通知。見落としゼロ</p>
             </div>
           </div>
-          <div class="project-title">GAS × Gemini API<br />自動レポート生成デモ</div>
-        </div>
-        <div class="project-body">
-          <p class="project-desc">スプレッドシートのデータを AI が分析し、毎週自動でレポートを生成・送信するデモシステム。</p>
           <div class="project-tags">
-            <span class="tag">GAS</span><span class="tag">Gemini API</span><span class="tag">AI</span><span class="tag">AI支援開発</span>
+            <span class="tag">GAS</span><span class="tag">LINE Notify</span><span class="tag">Google Forms</span>
           </div>
-          <a href="https://github.com/hariku0212/gas-ai-demo" class="project-link" target="_blank" rel="noopener">
-            <i class="fab fa-github"></i> GitHub で見る
-          </a>
+          <div class="project-card-actions">
+            <a href="https://github.com/hariku0212/portfolio-form-line-notifier" class="project-link" target="_blank" rel="noopener">
+              <i class="fab fa-github"></i> GitHubで見る
+            </a>
+            <a href="#contact" class="project-ask-btn">詳しく聞く</a>
+          </div>
         </div>
       </div>
 
-      <!-- 4枚目: 月次請求書PDF自動生成 → fa-file-invoice (#EA580C) -->
-      <div class="project-card" data-aos="fade-up" data-aos-delay="0">
+      <!-- Case 3: 月次請求書PDF自動生成 -->
+      <div class="project-card" data-aos="fade-up" data-aos-delay="120">
         <div class="project-header">
           <div class="project-icon">
             <div class="project-icon-container">
               <i class="fas fa-file-invoice" style="color: #EA580C;"></i>
             </div>
           </div>
-          <div class="project-title">月次請求書PDF<br />自動生成・Gmail 送信</div>
+          <div class="project-title">月次請求書PDF<br />自動生成・Gmail送信</div>
         </div>
         <div class="project-body">
-          <p class="project-desc">スプレッドシートから PDF 請求書を生成し、取引先へ自動メール送信。経理作業を大幅短縮。</p>
-          <div class="project-tags">
-            <span class="tag">GAS</span><span class="tag">Gmail</span><span class="tag">PDF生成</span><span class="tag">AI支援開発</span>
+          <div class="before-after">
+            <div class="before-block">
+              <span class="before-label">Before</span>
+              <p>毎月スプレッドシートからPDF化→メール添付を手作業</p>
+            </div>
+            <div class="after-block">
+              <span class="after-label">After</span>
+              <p>ボタン1つでPDF作成・メール送信まで完了（月2時間削減）</p>
+            </div>
           </div>
-          <a href="https://github.com/hariku0212/portfolio-invoice-automation" class="project-link" target="_blank" rel="noopener">
-            <i class="fab fa-github"></i> GitHub で見る
-          </a>
+          <div class="project-tags">
+            <span class="tag">GAS</span><span class="tag">Gmail</span><span class="tag">PDF生成</span>
+          </div>
+          <div class="project-card-actions">
+            <a href="https://github.com/hariku0212/portfolio-invoice-automation" class="project-link" target="_blank" rel="noopener">
+              <i class="fab fa-github"></i> GitHubで見る
+            </a>
+            <a href="#contact" class="project-ask-btn">詳しく聞く</a>
+          </div>
         </div>
       </div>
 
-      <!-- 5枚目: バドミントン練習記録・週次メール集計 → fa-chart-line (#0EA5E9) -->
+      <!-- Case 4: AI自動レポート -->
+      <div class="project-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="project-header">
+          <div class="project-icon">
+            <div class="project-icon-container">
+              <i class="fas fa-robot" style="color: #8B5CF6;"></i>
+            </div>
+          </div>
+          <div class="project-title">GAS × Gemini AI<br />自動レポート生成</div>
+        </div>
+        <div class="project-body">
+          <div class="before-after">
+            <div class="before-block">
+              <span class="before-label">Before</span>
+              <p>スプレッドシートのデータを毎週手でまとめてレポート作成</p>
+            </div>
+            <div class="after-block">
+              <span class="after-label">After</span>
+              <p>Gemini AIがデータを分析・毎週自動でレポートをメール送信</p>
+            </div>
+          </div>
+          <div class="project-tags">
+            <span class="tag">GAS</span><span class="tag">Gemini API</span><span class="tag">AI</span>
+          </div>
+          <div class="project-card-actions">
+            <a href="https://github.com/hariku0212/gas-ai-demo" class="project-link" target="_blank" rel="noopener">
+              <i class="fab fa-github"></i> GitHubで見る
+            </a>
+            <a href="#contact" class="project-ask-btn">詳しく聞く</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case 5: 練習記録・週次集計メール -->
       <div class="project-card" data-aos="fade-up" data-aos-delay="60">
         <div class="project-header">
           <div class="project-icon">
@@ -1111,58 +1331,28 @@
               <i class="fas fa-chart-line" style="color: #0EA5E9;"></i>
             </div>
           </div>
-          <div class="project-title">バドミントン練習記録<br />・週次メール集計</div>
+          <div class="project-title">バドミントン練習記録<br />週次集計メール</div>
         </div>
         <div class="project-body">
-          <p class="project-desc">練習スコアの記録・集計・グラフ化を自動化。毎週メールで全員に送信する仕組みを構築。</p>
-          <div class="project-tags">
-            <span class="tag">GAS</span><span class="tag">Chart</span><span class="tag">Gmail</span><span class="tag">AI支援開発</span>
-          </div>
-          <a href="https://github.com/hariku0212/portfolio-badminton-tracker" class="project-link" target="_blank" rel="noopener">
-            <i class="fab fa-github"></i> GitHub で見る
-          </a>
-        </div>
-      </div>
-
-      <!-- 6枚目: 家庭菜園管理 → fa-seedling (#84CC16) -->
-      <div class="project-card" data-aos="fade-up" data-aos-delay="120">
-        <div class="project-header">
-          <div class="project-icon">
-            <div class="project-icon-container">
-              <i class="fas fa-seedling" style="color: #84CC16;"></i>
+          <div class="before-after">
+            <div class="before-block">
+              <span class="before-label">Before</span>
+              <p>サークルの記録を紙に書いてExcelに転記</p>
+            </div>
+            <div class="after-block">
+              <span class="after-label">After</span>
+              <p>スコア入力→自動集計→全員にグラフ付きメール送信</p>
             </div>
           </div>
-          <div class="project-title">家庭菜園管理<br />野菜DB・月別作業カレンダー</div>
-        </div>
-        <div class="project-body">
-          <p class="project-desc">野菜ごとの栽培記録・作業カレンダー・月別レポートを GAS で管理するライフハックツール。</p>
           <div class="project-tags">
-            <span class="tag">GAS</span><span class="tag">スプレッドシート</span><span class="tag">カレンダー</span><span class="tag">AI支援開発</span>
+            <span class="tag">GAS</span><span class="tag">Chart</span><span class="tag">Gmail</span>
           </div>
-          <a href="https://github.com/hariku0212/portfolio-garden-tracker" class="project-link" target="_blank" rel="noopener">
-            <i class="fab fa-github"></i> GitHub で見る
-          </a>
-        </div>
-      </div>
-
-      <!-- 7枚目: 英単語テストアプリ → fa-code (#8B5CF6) -->
-      <div class="project-card" data-aos="fade-up" data-aos-delay="0">
-        <div class="project-header">
-          <div class="project-icon">
-            <div class="project-icon-container">
-              <i class="fas fa-code" style="color: #8B5CF6;"></i>
-            </div>
+          <div class="project-card-actions">
+            <a href="https://github.com/hariku0212/portfolio-badminton-tracker" class="project-link" target="_blank" rel="noopener">
+              <i class="fab fa-github"></i> GitHubで見る
+            </a>
+            <a href="#contact" class="project-ask-btn">詳しく聞く</a>
           </div>
-          <div class="project-title">英単語テストアプリ<br />（React / TypeScript）</div>
-        </div>
-        <div class="project-body">
-          <p class="project-desc">React × TypeScript で構築したフロントエンド SPA。単語登録・ランダム出題・スコア管理機能付き。</p>
-          <div class="project-tags">
-            <span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">SPA</span><span class="tag">AI支援開発</span>
-          </div>
-          <a href="https://github.com/hariku0212/vocab-app" class="project-link" target="_blank" rel="noopener">
-            <i class="fab fa-github"></i> GitHub で見る
-          </a>
         </div>
       </div>
 
@@ -1170,54 +1360,54 @@
   </div>
 </section>
 
-<!-- ===== 経歴・資格 ===== -->
-<section id="career" class="section">
+<!-- ===== Process（ご依頼の流れ） ===== -->
+<section id="process" class="section" style="background: var(--gray-50);">
   <div class="container">
-    <h2 class="section-title">経歴・資格</h2>
-    <p class="section-sub">技術力の裏付けとなる学歴・職歴・資格</p>
-    <div class="career-grid">
-      <div class="career-box" data-aos="fade-right">
-        <div class="career-box-title">経歴</div>
-        <ul class="timeline">
-          <li>
-            <div class="timeline-year">2024年3月</div>
-            <div class="timeline-text">京都大学 工学部 電気電子工学科 卒業</div>
-          </li>
-          <li>
-            <div class="timeline-year">2026年3月</div>
-            <div class="timeline-text">京都大学大学院 電気工学専攻 修了</div>
-          </li>
-          <li>
-            <div class="timeline-year">2026年4月</div>
-            <div class="timeline-text">大手製造業 入社（社名非公開） / システム開発担当</div>
-          </li>
-          <li>
-            <div class="timeline-year">並行して</div>
-            <div class="timeline-text">GAS × LINE × AI 業務自動化 フリーランス活動開始</div>
-          </li>
-        </ul>
+    <h2 class="section-title">ご依頼の流れ</h2>
+    <p class="section-sub">「頼んだらどうなるか」を先にお伝えします</p>
+
+    <div class="process-grid">
+
+      <div class="process-step" data-aos="fade-up" data-aos-delay="0">
+        <div class="process-number">STEP 01</div>
+        <div class="process-icon"><i class="fab fa-line"></i></div>
+        <h3 class="process-title">相談（無料）</h3>
+        <p class="process-desc">「こんなことできる？」から気軽にどうぞ。LINEかメールで。要件が固まっていなくても大丈夫です。</p>
       </div>
-      <div class="career-box" data-aos="fade-left">
-        <div class="career-box-title">資格・認定</div>
-        <ul class="cert-list">
-          <li>
-            <span class="cert-badge">取得済</span>
-            基本情報技術者試験
-          </li>
-          <li>
-            <span class="cert-badge">取得済</span>
-            応用情報技術者試験
-          </li>
-          <li>
-            <span class="cert-badge studying">勉強中</span>
-            情報処理安全確保支援士（RISS）
-          </li>
-          <li>
-            <span class="cert-badge amber">専攻</span>
-            電気工学（京大大学院）
-          </li>
-        </ul>
+
+      <div class="process-arrow" aria-hidden="true">
+        <i class="fas fa-chevron-right"></i>
       </div>
+
+      <div class="process-step" data-aos="fade-up" data-aos-delay="80">
+        <div class="process-number">STEP 02</div>
+        <div class="process-icon"><i class="fas fa-file-lines"></i></div>
+        <h3 class="process-title">ヒアリング・見積もり</h3>
+        <p class="process-desc">現状の業務フローをお聞きして、自動化できる範囲と費用をご提示。3万円〜のスポット対応。</p>
+      </div>
+
+      <div class="process-arrow" aria-hidden="true">
+        <i class="fas fa-chevron-right"></i>
+      </div>
+
+      <div class="process-step" data-aos="fade-up" data-aos-delay="160">
+        <div class="process-number">STEP 03</div>
+        <div class="process-icon"><i class="fas fa-code"></i></div>
+        <h3 class="process-title">開発（最短1週間〜）</h3>
+        <p class="process-desc">実際に動くものを小さく作り、確認いただきながら進めます。難しい操作は不要です。</p>
+      </div>
+
+      <div class="process-arrow" aria-hidden="true">
+        <i class="fas fa-chevron-right"></i>
+      </div>
+
+      <div class="process-step" data-aos="fade-up" data-aos-delay="240">
+        <div class="process-number">STEP 04</div>
+        <div class="process-icon"><i class="fas fa-handshake"></i></div>
+        <h3 class="process-title">納品・サポート</h3>
+        <p class="process-desc">引き渡し後も月額サポートプランで継続的に改善対応。運用中の疑問にもお答えします。</p>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1238,6 +1428,10 @@
           <li>LINE Bot 構築</li>
           <li>既存ツールの改修・修正</li>
         </ul>
+        <p class="price-for">
+          <i class="fas fa-user-check" style="color:var(--blue);margin-right:6px;"></i>
+          <strong>こんな方に</strong>: まず1つだけ試したい・特定の作業だけ自動化したい方
+        </p>
         <a href="#contact" class="btn" style="background:var(--blue);color:#fff;display:block;text-align:center;padding:12px;">相談する</a>
         <p class="price-note">※ 要件により変動します</p>
       </div>
@@ -1251,6 +1445,10 @@
           <li>新規ツール追加開発</li>
           <li>月次レポート・改善提案</li>
         </ul>
+        <p class="price-for">
+          <i class="fas fa-user-check" style="color:var(--blue);margin-right:6px;"></i>
+          <strong>こんな方に</strong>: 継続的に改善・追加したい・何かあればすぐ相談したい方
+        </p>
         <a href="#contact" class="btn" style="background:var(--amber);color:#1a1a1a;display:block;text-align:center;padding:12px;">相談する</a>
         <p class="price-note">※ 3ヶ月〜推奨</p>
       </div>
@@ -1258,37 +1456,109 @@
     <p style="text-align:center;margin-top:28px;font-size:0.85rem;color:var(--gray-400);">
       ※ 上記はあくまで参考です。規模・複雑さ・納期によって柔軟に対応します。<br />まずはお気軽にご相談ください。
     </p>
+    <div style="text-align:center;margin-top:40px;" data-aos="fade-up">
+      <!-- TODO: LINEのURLをキャプテンが後日設定 -->
+      <a href="#" class="btn btn-line" style="display:inline-flex;align-items:center;gap:10px;font-size:1rem;">
+        <i class="fab fa-line"></i> まず無料で相談する
+      </a>
+      <p style="margin-top:12px;font-size:0.82rem;color:var(--gray-400);">初回相談無料 · 返信は通常1営業日以内</p>
+    </div>
   </div>
 </section>
 
-<!-- ===== お問い合わせ ===== -->
+<!-- ===== About（プロフィール） ===== -->
+<section id="about" class="section">
+  <div class="container">
+    <h2 class="section-title">hariku について</h2>
+    <p class="section-sub">業務自動化に取り組む理由</p>
+
+    <div class="about-grid">
+      <!-- 左: テキスト -->
+      <div class="about-text" data-aos="fade-right">
+        <p class="about-intro">
+          大学院（電気工学）在学中から、自分の「面倒だ」と感じた作業をコードで自動化してきました。
+          バドミントンサークルの練習記録管理、塾の業務効率化システム——
+          作ったものがチームの役に立つのが、エンジニアとしての原点です。
+        </p>
+        <p class="about-intro" style="margin-top:16px;">
+          現在はメーカーでシステム開発に従事しながら、
+          「中小企業・個人事業主の業務を楽にする」ことを副業の使命にしています。
+        </p>
+
+        <!-- 経歴タイムライン -->
+        <div class="about-section-label">経歴</div>
+        <ul class="timeline">
+          <li>
+            <div class="timeline-year">2024年3月</div>
+            <div class="timeline-text">京都大学 工学部 電気電子工学科 卒業</div>
+          </li>
+          <li>
+            <div class="timeline-year">2026年3月</div>
+            <div class="timeline-text">京都大学大学院 電気工学専攻 修了</div>
+          </li>
+          <li>
+            <div class="timeline-year">2026年4月〜</div>
+            <div class="timeline-text">メーカー勤務（システム開発担当）</div>
+          </li>
+        </ul>
+
+        <!-- 資格 -->
+        <div class="about-section-label" style="margin-top:24px;">資格</div>
+        <ul class="cert-list">
+          <li>
+            <span class="cert-badge">取得済</span>
+            基本情報技術者試験
+          </li>
+          <li>
+            <span class="cert-badge">取得済</span>
+            応用情報技術者試験
+          </li>
+          <li>
+            <span class="cert-badge studying">勉強中</span>
+            情報処理安全確保支援士（RISS）
+          </li>
+        </ul>
+      </div>
+
+      <!-- 右: 顔写真エリア（現時点はプレースホルダー） -->
+      <div class="about-photo" data-aos="fade-left">
+        <div class="photo-placeholder">
+          <!-- TODO: 顔写真ファイルが届いたら<img>タグに差し替える -->
+          <i class="fas fa-user" style="font-size:4rem; color:var(--blue);"></i>
+        </div>
+        <div class="about-tags">
+          <span class="tag">業務自動化</span>
+          <span class="tag">GAS</span>
+          <span class="tag">LINE Bot</span>
+          <span class="tag">AI連携</span>
+          <span class="tag">平日夜・土日対応</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Contact（お問い合わせ） ===== -->
 <section id="contact">
   <h2 class="section-title">お問い合わせ</h2>
   <p class="section-sub">
-    業務の自動化・効率化でお悩みなら、<br />
-    まずは気軽にフォームからご連絡ください。
-  </p>
-  <p style="color:rgba(255,255,255,0.75);font-size:0.9rem;max-width:480px;margin:0 auto 32px;">
     「こんなことできる？」という段階のご相談も大歓迎です。<br />
-    要件整理からお手伝いします。
+    返信は通常1営業日以内。初回相談は無料です。
   </p>
 
-  <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-    <input type="text" name="name" placeholder="お名前" required />
-    <input type="email" name="email" placeholder="メールアドレス" required />
-    <textarea name="message" placeholder="お問い合わせ内容（例: 〇〇の自動化を検討しています）" required></textarea>
-    <button type="submit">送信する</button>
-  </form>
+  <!-- LINEボタン（最目立つ配置） -->
+  <div class="contact-main-cta">
+    <!-- TODO: LINEのURLをキャプテンが後日設定 -->
+    <a href="#" class="btn btn-line contact-btn-line">
+      <i class="fab fa-line"></i> LINEで気軽に相談する
+    </a>
+  </div>
 
-  <div class="contact-divider">— または —</div>
+  <div class="contact-divider">── または ──</div>
 
   <div class="contact-links">
-    <a href="https://github.com/hariku0212" class="contact-btn contact-btn-github" target="_blank" rel="noopener">
-      <i class="fab fa-github"></i>
-      GitHub プロフィール
-    </a>
     <a href="mailto:hariku20010212@gmail.com" class="contact-btn contact-btn-mail">
-      <i class="fas fa-envelope"></i> メールで問い合わせ
+      <i class="fas fa-envelope"></i> メールで相談する
     </a>
     <a href="tel:09039699616" class="contact-btn contact-btn-tel">
       <i class="fas fa-phone"></i> 09039699616
