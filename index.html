@@ -3,22 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hariku | 業務自動化エンジニア</title>
-  <meta name="description" content="GAS・LINE・AIで中小企業の業務を自動化。フリーランスエンジニア hariku のポートフォリオサイトです。" />
+  <title>hariku | 業務自動化・デジタル化支援</title>
+  <meta name="description" content="中小企業・個人事業主の業務自動化・デジタル化を支援。手作業の繰り返しをなくし、毎日の業務を楽にします。フリーランスエンジニア hariku のポートフォリオサイトです。" />
 
   <!-- ===== OGP / Twitter Card ===== -->
-  <meta property="og:title" content="hariku | 業務自動化エンジニア" />
-  <meta property="og:description" content="GAS・LINE・AIで中小企業の業務を自動化。繰り返し作業をゼロに。フリーランスエンジニア hariku のポートフォリオサイトです。" />
+  <meta property="og:title" content="hariku | 業務自動化・デジタル化支援" />
+  <meta property="og:description" content="中小企業・個人事業主の業務自動化・デジタル化を支援。繰り返し作業をゼロに。フリーランスエンジニア hariku のポートフォリオサイトです。" />
   <meta property="og:url" content="https://hariku0212.github.io/portfolio-website/" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="hariku | 業務自動化エンジニア" />
-  <meta name="twitter:description" content="GAS・LINE・AIで中小企業の業務を自動化。繰り返し作業をゼロに。フリーランスエンジニア hariku のポートフォリオサイトです。" />
+  <meta name="twitter:title" content="hariku | 業務自動化・デジタル化支援" />
+  <meta name="twitter:description" content="中小企業・個人事業主の業務自動化・デジタル化を支援。繰り返し作業をゼロに。フリーランスエンジニア hariku のポートフォリオサイトです。" />
 
   <!-- ===== Google Fonts ===== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap" rel="stylesheet">
 
   <!-- ===== Font Awesome 6 ===== -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -70,18 +71,35 @@
       --proj-5-from: #0E7490;
       --proj-5-to:   #0EA5E9;
     }
-    html { scroll-behavior: smooth; overflow-x: hidden; max-width: 100%; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Noto Sans JP', system-ui, "Yu Gothic", sans-serif;
       color: var(--gray-800);
       background: var(--white);
       line-height: 1.7;
-      overflow-x: hidden;
     }
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
     .container { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
     .section { padding: 80px 0; }
+    /* ===== 英語サブタイトル（u-d-l.jp 風 Lato極細） ===== */
+    .section-eyebrow {
+      font-family: 'Lato', sans-serif;
+      font-weight: 100;
+      font-size: 0.95rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      text-align: center;
+      color: var(--blue);
+      opacity: 0.55;
+      margin-bottom: 6px;
+      display: block;
+    }
+    /* Contactセクションは背景が濃紺のため白系で表示 */
+    #contact .section-eyebrow {
+      color: var(--white);
+      opacity: 0.6;
+    }
     .section-title {
       font-size: 1.75rem;
       font-weight: 900;
@@ -92,8 +110,9 @@
     .section-sub {
       text-align: center;
       color: var(--gray-400);
-      margin-bottom: 48px;
+      margin-bottom: 56px;
       font-size: 0.95rem;
+      letter-spacing: 0.02em;
     }
 
     /* ===== タグ ===== */
@@ -146,10 +165,11 @@
       position: relative;
     }
     .nav-logo {
-      font-size: 1.25rem;
-      font-weight: 900;
+      font-family: 'Lato', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
       color: var(--blue);
-      letter-spacing: -0.5px;
+      letter-spacing: 0.5px;
     }
     .nav-links {
       display: flex;
@@ -239,7 +259,6 @@
       align-items: center;
       justify-content: center;
     }
-    /* Hero背景: Unsplash画像 + グラデーション */
     #hero-bg {
       position: absolute;
       inset: 0;
@@ -248,7 +267,6 @@
         url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1920&q=80') center/cover no-repeat;
       z-index: 0;
     }
-    /* グリッドパターン overlay */
     #hero-grid {
       position: absolute;
       inset: 0;
@@ -257,7 +275,6 @@
       pointer-events: none;
       z-index: 1;
     }
-    /* Hero Grain texture */
     #hero::after {
       content: '';
       position: absolute;
@@ -268,13 +285,11 @@
       pointer-events: none;
       z-index: 1;
     }
-    /* ヒーロー内コンテンツ */
     #hero > *:not(#hero-bg):not(#hero-grid) {
       position: relative;
       z-index: 2;
     }
 
-    /* アバターアイコン */
     .hero-avatar {
       width: 90px;
       height: 90px;
@@ -340,7 +355,6 @@
     .btn-primary { background: var(--amber); color: #1a1a1a; }
     .btn-outline { background: transparent; border: 2px solid rgba(255,255,255,0.7); color: var(--white); }
 
-    /* LINEボタン */
     .btn-line {
       background: var(--line-green);
       color: var(--white);
@@ -369,7 +383,6 @@
     .stat-num { font-size: 2rem; font-weight: 900; color: var(--amber); }
     .stat-label { font-size: 0.8rem; opacity: 0.8; margin-top: 2px; }
 
-    /* モバイル: LINEボタン全幅 */
     @media (max-width: 640px) {
       .hero-buttons { flex-direction: column; align-items: stretch; padding: 0 20px; }
       .hero-buttons .btn { text-align: center; justify-content: center; }
@@ -505,7 +518,6 @@
       background: rgba(37, 99, 235, 0.12);
       color: var(--blue);
     }
-    /* Solution カード: 個別カラーバー */
     .solution-grid .solution-card:nth-child(1) {
       border-top: 4px solid var(--gray-400);
     }
@@ -536,7 +548,6 @@
       margin-top: 16px;
     }
 
-    /* 使用技術タグ エリア */
     .solution-tech {
       text-align: center;
       padding: 28px;
@@ -580,7 +591,6 @@
       transform: translateY(-10px) scale(1.02);
     }
 
-    /* プロジェクトヘッダー */
     .project-header {
       padding: 32px 24px 28px;
       color: var(--white);
@@ -597,14 +607,12 @@
       border-radius: 50% 50% 0 0 / 100% 100% 0 0;
     }
 
-    /* プロジェクトカード個別カラー */
     .project-card:nth-child(1) .project-header { background: linear-gradient(135deg, var(--proj-1-from) 0%, var(--proj-1-to) 100%); }
     .project-card:nth-child(2) .project-header { background: linear-gradient(135deg, var(--proj-2-from) 0%, var(--proj-2-to) 100%); }
     .project-card:nth-child(3) .project-header { background: linear-gradient(135deg, var(--proj-3-from) 0%, var(--proj-3-to) 100%); }
     .project-card:nth-child(4) .project-header { background: linear-gradient(135deg, var(--proj-4-from) 0%, var(--proj-4-to) 100%); }
     .project-card:nth-child(5) .project-header { background: linear-gradient(135deg, var(--proj-5-from) 0%, var(--proj-5-to) 100%); }
 
-    /* プロジェクトアイコン */
     .project-icon {
       display: flex;
       align-items: center;
@@ -632,7 +640,6 @@
 
     .project-title { font-size: 1rem; font-weight: 700; line-height: 1.4; }
 
-    /* 本文エリア */
     .project-body {
       padding: 20px 24px 24px;
       background: linear-gradient(
@@ -643,7 +650,6 @@
     }
     .project-tags { margin-bottom: 16px; }
 
-    /* リンクボタン */
     .project-link {
       display: inline-flex;
       align-items: center;
@@ -706,7 +712,6 @@
       color: var(--white);
     }
 
-    /* カードアクションボタン群 */
     .project-card-actions {
       display: flex;
       gap: 8px;
@@ -795,7 +800,6 @@
       flex-shrink: 0;
     }
 
-    /* モバイル: 矢印を非表示にして縦並び */
     @media (max-width: 640px) {
       .process-grid { flex-direction: column; align-items: center; }
       .process-step { max-width: 100%; width: 100%; }
@@ -905,17 +909,6 @@
       justify-content: center;
       margin: 0 auto 20px;
     }
-    .photo-img {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: center top;
-      border: 3px solid rgba(37, 99, 235, 0.2);
-      box-shadow: 0 8px 32px rgba(37, 99, 235, 0.12);
-      display: block;
-      margin: 0 auto 20px;
-    }
     .about-photo .about-tags {
       display: flex;
       flex-wrap: wrap;
@@ -923,7 +916,6 @@
       gap: 8px;
     }
 
-    /* タイムライン */
     .timeline { list-style: none; }
     .timeline li {
       position: relative;
@@ -942,7 +934,6 @@
     .timeline-year { font-size: 0.75rem; color: var(--gray-400); margin-bottom: 2px; }
     .timeline-text { font-weight: 600; color: var(--gray-800); }
 
-    /* 資格リスト */
     .cert-list { list-style: none; }
     .cert-list li {
       display: flex;
@@ -1052,38 +1043,30 @@
 
 <!-- ===== ヒーロー ===== -->
 <section id="hero">
-  <!-- 背景: グラデーション + Unsplash画像 -->
   <div id="hero-bg"></div>
-  <!-- グリッドパターン（維持） -->
   <div id="hero-grid"></div>
 
-  <!-- 「初回相談無料」バッジ -->
   <div class="hero-badge">
     <i class="fas fa-gift" style="color:var(--amber);margin-right:6px;"></i>
-    初回相談無料 · GAS × LINE × AI 自動化
+    初回相談無料 · 業務自動化・デジタル化のご相談
   </div>
 
-  <!-- アバターアイコン（維持） -->
   <div class="hero-avatar fade-up">
     <i class="fas fa-laptop-code"></i>
   </div>
 
-  <!-- 課題解決型キャッチコピー -->
   <h1 class="hero-title fade-up">
     繰り返しの事務作業、<br /><span>まだ手でやってますか？</span>
   </h1>
 
-  <!-- サブコピー（具体的な業務例を含む） -->
   <p class="hero-sub fade-up delay-1">
-    GAS・LINE・AIを使って、毎日の面倒な作業を自動化します。<br />
-    エクセル集計、LINE通知、請求書作成——<br />
+    日々の繰り返し作業を、仕組みで楽にします。<br />
+    エクセル集計、通知、請求書作成——<br />
     「これ、自動化できますか？」まず気軽に聞いてください。
   </p>
 
-  <!-- CTAボタン群（LINEを最優先に） -->
   <div class="hero-buttons fade-up delay-2">
-    <!-- LINEボタン（ファーストビュー最優先CTA） -->
-    <a href="https://line.me/ti/p/kl9keJaV6X" class="btn btn-line">
+    <a href="https://line.me/ti/p/kl9keJaV6X" class="btn btn-line" target="_blank" rel="noopener noreferrer">
       <i class="fab fa-line"></i> LINEで相談する（無料）
     </a>
     <a href="mailto:hariku20010212@gmail.com" class="btn btn-outline">
@@ -1091,7 +1074,6 @@
     </a>
   </div>
 
-  <!-- 実績数値 -->
   <div class="hero-stats fade-up delay-3">
     <div class="stat">
       <div class="stat-num">7+</div>
@@ -1119,9 +1101,10 @@
   </svg>
 </div>
 
-<!-- ===== Problem（お悩みチェックリスト） ===== -->
+<!-- ===== Problem ===== -->
 <section id="problem" class="section">
   <div class="container">
+    <span class="section-eyebrow">Problem</span>
     <h2 class="section-title">こんなお悩みありませんか？</h2>
     <p class="section-sub">中小企業・個人事業主の方からよくいただくご相談です</p>
     <div class="problem-grid">
@@ -1152,20 +1135,19 @@
       </div>
 
     </div>
-    <!-- セクション末尾のリード文 -->
     <div class="problem-lead" data-aos="fade-up">
       <p><strong>→ hariku がそれを解決します。</strong></p>
     </div>
   </div>
 </section>
 
-<!-- ===== Solution（解決アプローチ） ===== -->
+<!-- ===== Solution ===== -->
 <section id="solution" class="section" style="background: var(--gray-50);">
   <div class="container">
+    <span class="section-eyebrow">Solution</span>
     <h2 class="section-title">hariku の解決アプローチ</h2>
     <p class="section-sub">大がかりなシステムは不要。今使っているツールをそのまま活かして、手間だけ減らします。</p>
 
-    <!-- ベントグリッドレイアウト: 3カラム -->
     <div class="solution-grid">
 
       <div class="solution-card" data-aos="fade-up" data-aos-delay="0">
@@ -1204,7 +1186,6 @@
 
     </div>
 
-    <!-- 使用技術タグ（スキルセクションの代替） -->
     <div class="solution-tech" data-aos="fade-up">
       <p class="solution-tech-label">使用技術</p>
       <div class="solution-tech-tags">
@@ -1223,11 +1204,11 @@
 <!-- ===== 制作実績 ===== -->
 <section id="projects" class="section">
   <div class="container">
+    <span class="section-eyebrow">Works</span>
     <h2 class="section-title">制作実績</h2>
     <p class="section-sub">「こんな作業を自動化したい」に似たケースがあるかチェックしてみてください。</p>
     <div class="projects-grid">
 
-      <!-- Case 1: バドミントン成績管理 -->
       <div class="project-card" data-aos="fade-up" data-aos-delay="0">
         <div class="project-header">
           <div class="project-icon">
@@ -1260,7 +1241,6 @@
         </div>
       </div>
 
-      <!-- Case 2: Googleフォーム→LINE通知 -->
       <div class="project-card" data-aos="fade-up" data-aos-delay="60">
         <div class="project-header">
           <div class="project-icon">
@@ -1293,7 +1273,6 @@
         </div>
       </div>
 
-      <!-- Case 3: 月次請求書PDF自動生成 -->
       <div class="project-card" data-aos="fade-up" data-aos-delay="120">
         <div class="project-header">
           <div class="project-icon">
@@ -1326,7 +1305,6 @@
         </div>
       </div>
 
-      <!-- Case 4: AI自動レポート -->
       <div class="project-card" data-aos="fade-up" data-aos-delay="0">
         <div class="project-header">
           <div class="project-icon">
@@ -1359,7 +1337,6 @@
         </div>
       </div>
 
-      <!-- Case 5: 練習記録・週次集計メール -->
       <div class="project-card" data-aos="fade-up" data-aos-delay="60">
         <div class="project-header">
           <div class="project-icon">
@@ -1396,9 +1373,10 @@
   </div>
 </section>
 
-<!-- ===== Process（ご依頼の流れ） ===== -->
+<!-- ===== Process ===== -->
 <section id="process" class="section" style="background: var(--gray-50);">
   <div class="container">
+    <span class="section-eyebrow">Process</span>
     <h2 class="section-title">ご依頼の流れ</h2>
     <p class="section-sub">「頼んだらどうなるか」を先にお伝えします</p>
 
@@ -1451,6 +1429,7 @@
 <!-- ===== 料金 ===== -->
 <section id="pricing" class="section">
   <div class="container">
+    <span class="section-eyebrow">Pricing</span>
     <h2 class="section-title">料金の目安</h2>
     <p class="section-sub">規模や要件によって柔軟にご相談いただけます。まずはお気軽にどうぞ。</p>
     <div class="pricing-grid">
@@ -1493,7 +1472,7 @@
       ※ 上記はあくまで参考です。規模・複雑さ・納期によって柔軟に対応します。<br />まずはお気軽にご相談ください。
     </p>
     <div style="text-align:center;margin-top:40px;" data-aos="fade-up">
-      <a href="https://line.me/ti/p/kl9keJaV6X" class="btn btn-line" style="display:inline-flex;align-items:center;gap:10px;font-size:1rem;">
+      <a href="https://line.me/ti/p/kl9keJaV6X" class="btn btn-line" style="display:inline-flex;align-items:center;gap:10px;font-size:1rem;" target="_blank" rel="noopener noreferrer">
         <i class="fab fa-line"></i> まず無料で相談する
       </a>
       <p style="margin-top:12px;font-size:0.82rem;color:var(--gray-400);">初回相談無料 · 返信は通常1営業日以内</p>
@@ -1501,14 +1480,14 @@
   </div>
 </section>
 
-<!-- ===== About（プロフィール） ===== -->
+<!-- ===== About ===== -->
 <section id="about" class="section">
   <div class="container">
+    <span class="section-eyebrow">About</span>
     <h2 class="section-title">hariku について</h2>
     <p class="section-sub">業務自動化に取り組む理由</p>
 
     <div class="about-grid">
-      <!-- 左: テキスト -->
       <div class="about-text" data-aos="fade-right">
         <p class="about-intro">
           大学院（電気工学）在学中から、自分の「面倒だ」と感じた作業をコードで自動化してきました。
@@ -1520,7 +1499,6 @@
           「中小企業・個人事業主の業務を楽にする」ことを副業の使命にしています。
         </p>
 
-        <!-- 経歴タイムライン -->
         <div class="about-section-label">経歴</div>
         <ul class="timeline">
           <li>
@@ -1537,7 +1515,6 @@
           </li>
         </ul>
 
-        <!-- 資格 -->
         <div class="about-section-label" style="margin-top:24px;">資格</div>
         <ul class="cert-list">
           <li>
@@ -1555,9 +1532,10 @@
         </ul>
       </div>
 
-      <!-- 右: 顔写真エリア（現時点はプレースホルダー） -->
       <div class="about-photo" data-aos="fade-left">
-        <img src="assets/hariku_fig.jpg" alt="hariku" class="photo-img" />
+        <div class="photo-placeholder">
+          <i class="fas fa-user" style="font-size:4rem; color:var(--blue);"></i>
+        </div>
         <div class="about-tags">
           <span class="tag">業務自動化</span>
           <span class="tag">GAS</span>
@@ -1570,17 +1548,17 @@
   </div>
 </section>
 
-<!-- ===== Contact（お問い合わせ） ===== -->
+<!-- ===== Contact ===== -->
 <section id="contact">
+  <span class="section-eyebrow">Contact</span>
   <h2 class="section-title">お問い合わせ</h2>
   <p class="section-sub">
     「こんなことできる？」という段階のご相談も大歓迎です。<br />
     返信は通常1営業日以内。初回相談は無料です。
   </p>
 
-  <!-- LINEボタン（最目立つ配置） -->
   <div class="contact-main-cta">
-    <a href="https://line.me/ti/p/kl9keJaV6X" class="btn btn-line contact-btn-line">
+    <a href="https://line.me/ti/p/kl9keJaV6X" class="btn btn-line contact-btn-line" target="_blank" rel="noopener noreferrer">
       <i class="fab fa-line"></i> LINEで気軽に相談する
     </a>
   </div>
@@ -1591,15 +1569,15 @@
     <a href="mailto:hariku20010212@gmail.com" class="contact-btn contact-btn-mail">
       <i class="fas fa-envelope"></i> メールで相談する
     </a>
-    <a href="tel:09039699616" class="contact-btn contact-btn-tel">
-      <i class="fas fa-phone"></i> 09039699616
+    <a href="tel:09039699316" class="contact-btn contact-btn-tel">
+      <i class="fas fa-phone"></i> 09039699316
     </a>
   </div>
 </section>
 
 <!-- ===== フッター ===== -->
 <footer>
-  <p>© 2026 hariku — Built with <i class="fas fa-heart" style="color:#E11D48;"></i> and GAS</p>
+  <p>© 2026 hariku — 業務自動化・デジタル化支援</p>
 </footer>
 
 <!-- ===== AOS.js 初期化 ===== -->
