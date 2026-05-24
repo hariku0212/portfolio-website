@@ -1,1 +1,1346 @@
-PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9ImphIj4KPGhlYWQ+CiAgPG1ldGEgY2hhcnNldD0iVVRGLTgiIC8+CiAgPG1ldGEgbmFtZT0idmlld3BvcnQiIGNvbnRlbnQ9IndpZHRoPWRldmljZS13aWR0aCwgaW5pdGlhbC1zY2FsZT0xLjAiIC8+CiAgPHRpdGxlPmhhcmlrdSB8IOalreWLmeiHquWLleWMluOCqOODs+OCuOODi+OCojwvdGl0bGU+CiAgPG1ldGEgbmFtZT0iZGVzY3JpcHRpb24iIGNvbnRlbnQ9IkdBU+ODu0xJTkXjg7tBSeOBp+S4reWwj+S8gealreOBrualreWLmeOCkuiHquWLleWMluOAguODleODquODvOODqeODs+OCueOCqOODs+OCuOODi+OCoiBoYXJpa3Ug44Gu44Od44O844OI44OV44Kp44Oq44Kq44K144Kk44OI44Gn44GZ44CCIiAvPgoKICA8IS0tID09PT09IE9HUCAvIFR3aXR0ZXIgQ2FyZCA9PT09PSAtLT4KICA8bWV0YSBwcm9wZXJ0eT0ib2c6dGl0bGUiIGNvbnRlbnQ9ImhhcmlrdSB8IOalreWLmeiHquWLleWMluOCqOODs+OCuOODi+OCqiIgLz4KICA8bWV0YSBwcm9wZXJ0eT0ib2c6ZGVzY3JpcHRpb24iIGNvbnRlbnQ9IkdBU+ODu0xJTkXjg7tBSeOBp+S4reWwj+S8gealreOBrualreWLmeOCkuiHquWLleWMluOAgue5sOOCiui/lOOBl+S9nOalreOCkuOCvOODreOBq+OAguODleODquODvOODqeODs+OCueOCqOODs+OCuOODi+OCoiBoYXJpa3Ug44Gu44Od44O844OI44OV44Kp44Oq44Kq44K144Kk44OI44Gn44GZ44CCIiAvPgogIDxtZXRhIHByb3BlcnR5PSJvZzp1cmwiIGNvbnRlbnQ9Imh0dHBzOi8vaGFyaWt1MDIxMi5naXRodWIuaW8vcG9ydGZvbGlvLXdlYnNpdGUvIiAvPgogIDxtZXRhIHByb3BlcnR5PSJvZzp0eXBlIiBjb250ZW50PSJ3ZWJzaXRlIiAvPgogIDxtZXRhIG5hbWU9InR3aXR0ZXI6Y2FyZCIgY29udGVudD0ic3VtbWFyeSIgLz4KICA8bWV0YSBuYW1lPSJ0d2l0dGVyOnRpdGxlIiBjb250ZW50PSJoYXJpa3UgfCDmpa3li5noh6rli5XljJbjgqjjg7Pjgrjjg4vjgqoiIC8+CiAgPG1ldGEgbmFtZT0idHdpdHRlcjpkZXNjcmlwdGlvbiIgY29udGVudD0iR0FT44O7TElOReODu0FJ44Gn5Lit5bCP5LyB5qWt44Gu5qWt5YuZ44KS6Ieq5YuV5YyW44CC57mw44KK6L+U44GX5L2c5qWt44KS44K844Ot44Gr44CC44OV44Oq44O844Op44Oz44K544Ko44Oz44K444OL44KiIGhhcmlrdSDjga7jg53jg7zjg4jjg5Xjgqnjg6rjgqrjgrXjgqTjg4jjgafjgZnjgIIiIC8+CgogIDwhLS0gPT09PT0gR29vZ2xlIEZvbnRzID09PT09IC0tPgogIDxsaW5rIHJlbD0icHJlY29ubmVjdCIgaHJlZj0iaHR0cHM6Ly9mb250cy5nb29nbGVhcGlzLmNvbSI+CiAgPGxpbmsgcmVsPSJwcmVjb25uZWN0IiBocmVmPSJodHRwczovL2ZvbnRzLmdzdGF0aWMuY29tIiBjcm9zc29yaWdpbj4KICA8bGluayBocmVmPSJodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2NzczI/ZmFtaWx5PU5vdG8rU2FucytKUDp3Z2h0QDQwMDs1MDA7NzAwOzkwMCZkaXNwbGF5PXN3YXAiIHJlbD0ic3R5bGVzaGVldCI+CgogIDwhLS0gPT09PT0gRm9udCBBd2Vzb21lIDYgPT09PT0gLS0+CiAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL2NkbmpzLmNsb3VkZmxhcmUuY29tL2FqYXgvbGlicy9mb250LWF3ZXNvbWUvNi41LjAvY3NzL2FsbC5taW4uY3NzIiAvPgoKICA8IS0tID09PT09IERldmljb25zID09PT09IC0tPgogIDxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iaHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doL2Rldmljb25zL2Rldmljb25AbGF0ZXN0L2Rldmljb24ubWluLmNzcyIgLz4KCiAgPCEtLSA9PT09PSBBT1MuanMgPT09PT0gLS0+CiAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL3VucGtnLmNvbS9hb3NAMi4zLjQvZGlzdC9hb3MuY3NzIiAvPgoKICA8c3R5bGU+CiAgICAvKiA9PT09PSDjg aalreODg+ODg+ODiCAmIOODmeODvOOCuCA9PT09PSAqLwogICAgKiwgKjo6YmVmb3JlLCAqOjphZnRlciB7IGJveC1zaXppbmc6IGJvcmRlci1ib3g7IG1hcmdpbjogMDsgcGFkZGluZzogMDsgfQogICAgOnJvb3QgewogICAgICAtLWJsdWU6ICMyNTYzRUI7CiAgICAgIC0tYmx1ZS1kYXJrOiAjMUQ0RUQ4OwogICAgICAtLWJsdWUtbGlnaHQ6ICNFRkY2RkY7CiAgICAgIC0tYW1iZXI6ICNGNUUWMEI7CiAgICAgIC0tYW1iZXItZGFyazogI0Q5NzcwNjsKICAgICAgLS1ncmF5LTUwOiAjRjlGQUZCOwogICAgICAtLWdyYXktMTAwOiAjRjNGNEY2OwogICAgICAtLWdyYXktMjAwOiAjRTVFN0VCOwogICAgICAtLWdyYXktNDAwOiAjOUNBM0FGOwogICAgICAtLWdyYXktNjAwOiAjNEI1NTYzOwogICAgICAtLWdyYXktODAwOiAjMUYyOTM3OwogICAgICAtLXdoaXRlOiAjRkZGRkZGOwogICAgICAtLW1heC13OiAxMDgwcHg7CiAgICAgIC0tcmFkaXVzOiAxMnB4OwogICAgICAvKiBGaXgyOiBwcm9qZWN0IGNhcmQgaGVhZGVyIGNvbG9ycyB2aWEgQ1NTIHZhcnMgKi8KICAgICAgLS1wcm9qLTEtZnJvbTogIzFFM0E4QTsKICAgICAgLS1wcm9qLTEtdG86ICAgIzI1NjNFQjsKICAgICAgLS1wcm9qLTItZnJvbTogIzA2NUY0NjsKICAgICAgLS1wcm9qLTItdG86ICAgIzA1OTY2OTsKICAgICAgLS1wcm9qLTMtZnJvbTogIzdDM0FFRDsKICAgICAgLS1wcm9qLTMtdG86ICAgIzhCNUNGNjsKICAgICAgLS1wcm9qLTQtZnJvbTogIzlBMzQxMjsKICAgICAgLS1wcm9qLTQtdG86ICAgI0VBNTgwQzsKICAgICAgLS1wcm9qLTUtZnJvbTogIzBFNzQ5MDsKICAgICAgLS1wcm9qLTUtdG86ICAgIzBFQTVFOTsKICAgICAgLS1wcm9qLTYtZnJvbTogIzREN0MwRjsKICAgICAgLS1wcm9qLTYtdG86ICAgIzg0Q0MxNjsKICAgICAgLS1wcm9qLTctZnJvbTogIzg4MTMzNzsKICAgICAgLS1wcm9qLTctdG86ICAgI0UxMUQ0ODsKICAgIH0KICAgIGh0bWwgeyBzY3JvbGwtYmVoYXZpb3I6IHNtb290aDsgfQogICAgYm9keSB7CiAgICAgIGZvbnQtZmFtaWx5OiAnTm90byBTYW5zIEpQJywgc3lzdGVtLXVpLCAiWXUgR290aGljIiwgc2Fucy1zZXJpZjsKICAgICAgY29sb3I6IHZhcigtLWdyYXktODAwKTsKICAgICAgYmFja2dyb3VuZDogdmFyKC0td2hpdGUpOwogICAgICBsaW5lLWhlaWdodDogMS43OwogICAgfQogICAgYSB7IGNvbG9yOiBpbmhlcml0OyB0ZXh0LWRlY29yYXRpb246IG5vbmU7IH0KICAgIGltZyB7IG1heC13aWR0aDogMTAwJTsgZGlzcGxheTogYmxvY2s7IH0KICAgIC5jb250YWluZXIgeyBtYXgtd2lkdGg6IHZhcigtLW1heC13KTsgbWFyZ2luOiAwIGF1dG87IHBhZGRpbmc6IDAgMjBweDsgfQogICAgLnNlY3Rpb24geyBwYWRkaW5nOiA4MHB4IDA7IH0KICAgIC5zZWN0aW9uLXRpdGxlIHsKICAgICAgZm9udC1zaXplOiAxLjc1cmVtOwogICAgICBmb250LXdlaWdodDogNzAwOwogICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7CiAgICAgIG1hcmdpbi1ib3R0b206IDEycHg7CiAgICAgIGNvbG9yOiB2YXIoLS1ncmF5LTgwMCk7CiAgICB9CiAgICAuc2VjdGlvbi1zdWIgewogICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7CiAgICAgIGNvbG9yOiB2YXIoLS1ncmF5LTYwMCk7CiAgICAgIG1hcmdpbi1ib3R0b206IDQ4cHg7CiAgICAgIGZvbnQtc2l6ZTogMC45NXJlbTsKICAgIH0KCiAgICAvKgogICAgICogPT09PT0g44K/44Kw IOODh+OCtuOCpOODs+W5vicgKHY0KSA9PT09PQogICAgICog5YGP5pu444ziiYXjgYsoOiDjg5Hjg4fjgqPOh+Og44GX5a6M5a6MIOODnuODvOODgOODvOi2iuWKoOOBp+ODlOODq+W9k72o44KS5pys57WT
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>hariku | 業務自動化エンジニア</title>
+  <meta name="description" content="GAS・LINE・AIで中小企業の業務を自動化。フリーランスエンジニア hariku のポートフォリオサイトです。" />
+
+  <!-- ===== OGP / Twitter Card ===== -->
+  <meta property="og:title" content="hariku | 業務自動化エンジニア" />
+  <meta property="og:description" content="GAS・LINE・AIで中小企業の業務を自動化。繰り返し作業をゼロに。フリーランスエンジニア hariku のポートフォリオサイトです。" />
+  <meta property="og:url" content="https://hariku0212.github.io/portfolio-website/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="hariku | 業務自動化エンジニア" />
+  <meta name="twitter:description" content="GAS・LINE・AIで中小企業の業務を自動化。繰り返し作業をゼロに。フリーランスエンジニア hariku のポートフォリオサイトです。" />
+
+  <!-- ===== Google Fonts ===== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <!-- ===== Font Awesome 6 ===== -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- ===== Devicons ===== -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+
+  <!-- ===== AOS.js ===== -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+  <style>
+    /* ===== リセット & ベース ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue: #2563EB;
+      --blue-dark: #1D4ED8;
+      --blue-light: #EFF6FF;
+      --amber: #F59E0B;
+      --amber-dark: #D97706;
+      --gray-50: #F9FAFB;
+      --gray-100: #F3F4F6;
+      --gray-200: #E5E7EB;
+      --gray-400: #9CA3AF;
+      --gray-600: #4B5563;
+      --gray-800: #1F2937;
+      --white: #FFFFFF;
+      --max-w: 1080px;
+      --radius: 12px;
+      /* Fix2: project card header colors via CSS vars */
+      --proj-1-from: #1E3A8A;
+      --proj-1-to:   #2563EB;
+      --proj-2-from: #065F46;
+      --proj-2-to:   #059669;
+      --proj-3-from: #7C3AED;
+      --proj-3-to:   #8B5CF6;
+      --proj-4-from: #9A3412;
+      --proj-4-to:   #EA580C;
+      --proj-5-from: #0E7490;
+      --proj-5-to:   #0EA5E9;
+      --proj-6-from: #4D7C0F;
+      --proj-6-to:   #84CC16;
+      --proj-7-from: #881337;
+      --proj-7-to:   #E11D48;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans JP', system-ui, "Yu Gothic", sans-serif;
+      color: var(--gray-800);
+      background: var(--white);
+      line-height: 1.7;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
+    .section { padding: 80px 0; }
+    .section-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 12px;
+      color: var(--gray-800);
+    }
+    .section-sub {
+      text-align: center;
+      color: var(--gray-600);
+      margin-bottom: 48px;
+      font-size: 0.95rem;
+    }
+
+    /*
+     * ===== タグ デザイン強化 (v4) =====
+     * 変更理由: パディング増量・ボーダー追加でピル形状を洗練
+     */
+    .tag {
+      display: inline-block;
+      background: rgba(37, 99, 235, 0.08);
+      color: var(--blue);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin: 3px 3px 3px 0;
+      border: 1px solid rgba(37, 99, 235, 0.15);
+      letter-spacing: 0.2px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .tag:hover {
+      background: rgba(37, 99, 235, 0.15);
+    }
+
+    /* ===== カスタムスクロールバー ===== */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--gray-100); }
+    ::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--blue-dark); }
+
+    /* ===== テキスト選択色 ===== */
+    ::selection { background: var(--blue); color: var(--white); }
+
+    /* ===== ナビゲーション ===== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--gray-200);
+      transition: box-shadow 0.3s, background 0.3s;
+    }
+    header.scrolled {
+      background: rgba(255,255,255,0.98);
+      box-shadow: 0 2px 16px rgba(37,99,235,0.10);
+    }
+    nav {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 20px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+    .nav-logo {
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: var(--blue);
+      letter-spacing: -0.5px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--gray-600);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-cta {
+      background: var(--blue);
+      color: var(--white) !important;
+      padding: 8px 20px;
+      border-radius: 999px;
+      font-weight: 600 !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--blue-dark) !important; color: var(--white) !important; }
+
+    /* ハンバーガーメニュー */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      background: none;
+      border: none;
+      z-index: 110;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--gray-800);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 640px) {
+      .hamburger { display: flex; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        gap: 0;
+        background: var(--white);
+        border-top: 1px solid var(--gray-200);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        padding: 8px 0 16px;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links a {
+        display: block;
+        padding: 12px 24px;
+        font-size: 1rem;
+      }
+      .nav-cta {
+        margin: 8px 24px 0;
+        border-radius: 8px;
+        text-align: center;
+        padding: 12px 24px;
+      }
+    }
+
+    /* ===== ヒーロー ===== */
+    #hero {
+      position: relative;
+      color: var(--white);
+      padding: 100px 20px 80px;
+      text-align: center;
+      overflow: hidden;
+      min-height: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    /* Unsplash 背景画像 */
+    #hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: 0;
+    }
+    /* dim overlay - テキスト可読性確保 */
+    #hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(10, 20, 60, 0.78) 0%,
+        rgba(15, 35, 88, 0.72) 40%,
+        rgba(37, 99, 235, 0.55) 100%
+      );
+    }
+    /* グリッドパターン overlay */
+    #hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 0);
+      background-size: 32px 32px;
+      pointer-events: none;
+      z-index: 1;
+    }
+    /* ヒーロー内コンテンツ */
+    #hero > *:not(#hero-bg):not(#hero-grid) {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* アバターアイコン */
+    .hero-avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+      border: 3px solid rgba(255,255,255,0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      backdrop-filter: blur(4px);
+      font-size: 2.5rem;
+      color: var(--amber);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .hero-avatar:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 32px rgba(245,158,11,0.4);
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 4px 16px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+      letter-spacing: 0.5px;
+      position: relative;
+      backdrop-filter: blur(4px);
+    }
+    .hero-title {
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: 900;
+      line-height: 1.3;
+      margin-bottom: 20px;
+      letter-spacing: -0.5px;
+      position: relative;
+    }
+    .hero-title span { color: var(--amber); }
+    .hero-sub {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      opacity: 0.88;
+      margin-bottom: 36px;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+    }
+    .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; }
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: transform 0.15s, box-shadow 0.15s;
+      cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+    .btn-primary { background: var(--amber); color: #1a1a1a; }
+    .btn-outline { background: transparent; border: 2px solid rgba(255,255,255,0.7); color: var(--white); }
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      margin-top: 52px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+    .stat { text-align: center; }
+    .stat-num { font-size: 2rem; font-weight: 900; color: var(--amber); }
+    .stat-label { font-size: 0.8rem; opacity: 0.8; margin-top: 2px; }
+
+    /* ===== 波形セパレーター ===== */
+    .wave-divider {
+      background: transparent;
+      line-height: 0;
+      margin-top: -1px;
+      position: relative;
+      z-index: 2;
+    }
+    .wave-divider svg {
+      display: block;
+      width: 100%;
+      height: 60px;
+    }
+    /* ヒーロー直後の波形はヒーローの暗い色に合わせる */
+    #hero + .wave-divider {
+      background: rgba(10,20,60,0);
+    }
+
+    /*
+     * ===== スキルカード 全面リデザイン (v4) =====
+     *
+     * 【設計選定理由】Glassmorphism を採用
+     * 調査元: franwbu.com/blog/glassmorphism-in-web-design/ (2025)
+     *         natebal.com/glassmorphism-web-design/
+     * 選定理由:
+     * - スキルセクション背景が var(--gray-50) のため、半透明ガラス効果が最も映える
+     * - 2024-2025年ポートフォリオトレンド調査でGlassmorphismが最上位
+     * - ブラウザ対応95%以上（Chrome/Edge/Firefox/Safari全対応）
+     * - 既存カラーパレット（--blue/#2563EB, --amber/#F59E0B）のグラデーションと相性抜群
+     * - Gradient Border は白背景向きだが、gray-50背景ではガラス感の方が深みが出る
+     */
+    #skills { background: var(--gray-50); }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 24px;
+    }
+
+    /* Glassmorphism スキルカード本体 */
+    .skill-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 16px;
+      padding: 32px 24px 28px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  box-shadow 0.3s ease,
+                  background 0.3s ease;
+      box-shadow: 0 4px 24px rgba(37, 99, 235, 0.08),
+                  0 1px 4px rgba(0, 0, 0, 0.04);
+    }
+
+    /* カード上部のカラーバー（グラデーション）*/
+    .skill-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--blue) 0%, var(--amber) 100%);
+      border-radius: 16px 16px 0 0;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 48px rgba(37, 99, 235, 0.18),
+                  0 8px 16px rgba(0, 0, 0, 0.06);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    /* スキルアイコンラッパー */
+    .skill-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    /* スキルアイコンコンテナ（角丸背景付き）*/
+    .skill-icon-container {
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(245, 158, 11, 0.06) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  background 0.3s ease,
+                  box-shadow 0.3s ease;
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.08);
+    }
+
+    .skill-card:hover .skill-icon-container {
+      transform: scale(1.15) rotate(-3deg);
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.15) 0%, rgba(245, 158, 11, 0.12) 100%);
+      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.16);
+    }
+
+    /* Devicons colored はオリジナルカラーを保持 */
+    .skill-icon-container .devicon-colored { color: inherit !important; }
+
+    /* スキル名・説明文 強化 */
+    .skill-name {
+      font-weight: 800;
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+      color: var(--gray-800);
+      letter-spacing: -0.3px;
+    }
+    .skill-desc { font-size: 0.85rem; color: var(--gray-600); line-height: 1.6; }
+
+    /*
+     * ===== 制作実績カード デザイン強化 (v4) =====
+     * - ホバー効果: translateY(-10px) scale(1.02) + 強化シャドウ
+     * - プロジェクトヘッダー: 下端に半楕円波形追加
+     * - 本文エリア: 薄いグラデーション背景
+     * - リンクボタン: アイコン右移動アニメーション追加
+     */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .project-card {
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: box-shadow 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      background: var(--white);
+    }
+    .project-card:hover {
+      box-shadow: 0 24px 56px rgba(37, 99, 235, 0.18),
+                  0 8px 20px rgba(0, 0, 0, 0.08);
+      transform: translateY(-10px) scale(1.02);
+    }
+
+    /* プロジェクトヘッダー: 下端に半楕円波形 */
+    .project-header {
+      padding: 24px 24px 20px;
+      color: var(--white);
+      position: relative;
+    }
+    .project-header::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 20px;
+      background: var(--white);
+      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    }
+
+    /* プロジェクトカード個別カラー（CSS変数管理 v4 Fix2） */
+    .project-card:nth-child(1) .project-header { background: linear-gradient(135deg, var(--proj-1-from) 0%, var(--proj-1-to) 100%); }
+    .project-card:nth-child(2) .project-header { background: linear-gradient(135deg, var(--proj-2-from) 0%, var(--proj-2-to) 100%); }
+    .project-card:nth-child(3) .project-header { background: linear-gradient(135deg, var(--proj-3-from) 0%, var(--proj-3-to) 100%); }
+    .project-card:nth-child(4) .project-header { background: linear-gradient(135deg, var(--proj-4-from) 0%, var(--proj-4-to) 100%); }
+    .project-card:nth-child(5) .project-header { background: linear-gradient(135deg, var(--proj-5-from) 0%, var(--proj-5-to) 100%); }
+    .project-card:nth-child(6) .project-header { background: linear-gradient(135deg, var(--proj-6-from) 0%, var(--proj-6-to) 100%); }
+    .project-card:nth-child(7) .project-header { background: linear-gradient(135deg, var(--proj-7-from) 0%, var(--proj-7-to) 100%); }
+
+    /* プロジェクトアイコン: Font Awesomeアイコンコンテナ */
+    .project-icon {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-bottom: 8px;
+    }
+    .project-icon-container {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.4rem;
+      transition: background 0.25s ease, transform 0.25s ease;
+      backdrop-filter: blur(4px);
+      border: 1.5px solid rgba(255, 255, 255, 0.25);
+    }
+    .project-icon-container i {
+      font-size: 1.6rem;
+    }
+    .project-card:hover .project-icon-container {
+      background: rgba(255, 255, 255, 0.25);
+      transform: scale(1.1);
+    }
+
+    .project-title { font-size: 1rem; font-weight: 700; line-height: 1.4; }
+
+    /* 本文エリア: 薄いグラデーション背景 */
+    .project-body {
+      padding: 20px 24px 24px;
+      background: linear-gradient(
+        180deg,
+        rgba(248, 250, 252, 0.8) 0%,
+        var(--white) 40%
+      );
+    }
+    .project-desc { font-size: 0.85rem; color: var(--gray-600); margin-bottom: 14px; line-height: 1.6; }
+    .project-tags { margin-bottom: 16px; }
+
+    /* リンクボタン: アイコン右移動アニメーション */
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--blue);
+      border: 1.5px solid var(--blue);
+      padding: 8px 18px;
+      border-radius: 999px;
+      transition: background 0.25s ease,
+                  color 0.25s ease,
+                  transform 0.25s ease,
+                  box-shadow 0.25s ease;
+    }
+    .project-link:hover {
+      background: var(--blue);
+      color: var(--white);
+      transform: translateX(2px);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    }
+    .project-link i {
+      transition: transform 0.25s ease;
+    }
+    .project-link:hover i {
+      transform: translateX(3px);
+    }
+
+    /* ===== 経歴・資格 ===== */
+    #career { background: var(--gray-50); }
+    .career-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    @media (max-width: 640px) { .career-grid { grid-template-columns: 1fr; } }
+    .career-box {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+    .career-box-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--blue-light);
+    }
+    .timeline { list-style: none; }
+    .timeline li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 18px;
+      font-size: 0.9rem;
+    }
+    .timeline li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 8px;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--blue);
+    }
+    .timeline-year { font-size: 0.75rem; color: var(--gray-400); margin-bottom: 2px; }
+    .timeline-text { font-weight: 600; color: var(--gray-800); }
+    .cert-list { list-style: none; }
+    .cert-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--gray-100);
+      font-size: 0.9rem;
+    }
+    .cert-list li:last-child { border-bottom: none; }
+    .cert-badge {
+      background: var(--blue-light);
+      color: var(--blue);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .cert-badge.amber { background: #FFFBEB; color: var(--amber-dark); }
+    .cert-badge.studying { background: #F0FDF4; color: #16A34A; }
+
+    /* ===== 料金 ===== */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .price-card {
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      text-align: center;
+      background: var(--white);
+      transition: box-shadow 0.2s;
+    }
+    .price-card.featured {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 2px var(--blue);
+    }
+    .price-card:hover { box-shadow: 0 6px 24px rgba(37,99,235,0.12); }
+    .price-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+    .price-amount {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--gray-800);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .price-unit { font-size: 0.85rem; color: var(--gray-600); margin-bottom: 20px; }
+    .price-features { list-style: none; text-align: left; margin-bottom: 24px; }
+    .price-features li {
+      font-size: 0.88rem;
+      color: var(--gray-600);
+      padding: 6px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .price-features li::before { content: '✓'; color: var(--blue); font-weight: 700; }
+    .price-note {
+      font-size: 0.78rem;
+      color: var(--gray-400);
+      margin-top: 8px;
+    }
+
+    /* ===== お問い合わせ ===== */
+    #contact {
+      background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%);
+      color: var(--white);
+      text-align: center;
+      padding: 80px 20px;
+    }
+    #contact .section-title { color: var(--white); }
+    #contact .section-sub { color: rgba(255,255,255,0.8); }
+
+    /* フォーム */
+    .contact-form {
+      max-width: 520px;
+      margin: 0 auto 36px;
+      text-align: left;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      margin-bottom: 12px;
+      background: rgba(255,255,255,0.12);
+      color: var(--white);
+      outline: none;
+      transition: background 0.2s;
+    }
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: rgba(255,255,255,0.55); }
+    .contact-form input:focus,
+    .contact-form textarea:focus { background: rgba(255,255,255,0.2); }
+    .contact-form textarea { resize: vertical; min-height: 120px; }
+    .contact-form button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 999px;
+      background: var(--amber);
+      color: #1a1a1a;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .contact-form button:hover { background: var(--amber-dark); transform: translateY(-2px); }
+
+    .contact-divider {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.85rem;
+      margin-bottom: 24px;
+    }
+    .contact-links {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .contact-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+    .contact-btn-github { background: #24292e; color: var(--white); }
+    .contact-btn-mail { background: var(--amber); color: #1a1a1a; }
+    .contact-btn-tel { background: rgba(255,255,255,0.15); color: var(--white); border: 1.5px solid rgba(255,255,255,0.4); }
+
+    /* ===== フッター ===== */
+    footer {
+      background: var(--gray-800);
+      color: var(--gray-400);
+      text-align: center;
+      padding: 28px 20px;
+      font-size: 0.82rem;
+    }
+
+    /* ===== アニメーション ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp 0.6s ease both; }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+
+    /* フローティングパーティクル (CSS純正) */
+    @keyframes floatParticle {
+      0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.4; }
+      33% { transform: translateY(-20px) translateX(10px) scale(1.1); opacity: 0.7; }
+      66% { transform: translateY(-10px) translateX(-8px) scale(0.9); opacity: 0.3; }
+    }
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      pointer-events: none;
+      animation: floatParticle linear infinite;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== ナビゲーション ===== -->
+<header id="site-header">
+  <nav>
+    <span class="nav-logo">hariku.dev</span>
+    <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#skills">スキル</a></li>
+      <li><a href="#projects">実績</a></li>
+      <li><a href="#career">経歴</a></li>
+      <li><a href="#pricing">料金</a></li>
+      <li><a href="#contact" class="nav-cta">お問い合わせ</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ===== ヒーロー ===== -->
+<section id="hero">
+  <!-- 背景画像レイヤー (Unsplash: 宇宙・地球・テクノロジー系の暗い写真) -->
+  <div id="hero-bg"></div>
+  <!-- グリッドパターン -->
+  <div id="hero-grid"></div>
+
+  <!-- CSS パーティクル -->
+  <div class="particle" style="width:8px;height:8px;top:15%;left:10%;animation-duration:8s;animation-delay:0s;"></div>
+  <div class="particle" style="width:5px;height:5px;top:25%;left:85%;animation-duration:11s;animation-delay:2s;"></div>
+  <div class="particle" style="width:12px;height:12px;top:70%;left:20%;animation-duration:9s;animation-delay:4s;"></div>
+  <div class="particle" style="width:6px;height:6px;top:60%;left:75%;animation-duration:13s;animation-delay:1s;"></div>
+  <div class="particle" style="width:10px;height:10px;top:40%;left:50%;animation-duration:7s;animation-delay:3s;"></div>
+  <div class="particle" style="width:4px;height:4px;top:80%;left:90%;animation-duration:10s;animation-delay:5s;"></div>
+
+  <!-- アバターアイコン -->
+  <div class="hero-avatar fade-up">
+    <i class="fas fa-laptop-code"></i>
+  </div>
+
+  <div class="hero-badge"><i class="fas fa-bolt" style="color:var(--amber);margin-right:6px;"></i> GAS × LINE × AI 自動化エンジニア</div>
+  <h1 class="hero-title fade-up">
+    業務自動化で、<br /><span>あなたの時間を取り戻す</span>
+  </h1>
+  <p class="hero-sub fade-up delay-1">
+    GAS × LINE × AI で中小企業の効率化をサポート。<br />
+    繰り返し作業をゼロに。あなたはコア業務に集中してください。
+  </p>
+  <div class="hero-buttons fade-up delay-2">
+    <a href="#projects" class="btn btn-primary">実績を見る</a>
+    <a href="#contact" class="btn btn-outline">お問い合わせ</a>
+  </div>
+  <div class="hero-stats fade-up delay-3">
+    <div class="stat">
+      <div class="stat-num">7+</div>
+      <div class="stat-label">制作実績</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3万〜</div>
+      <div class="stat-label">スポット対応</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">5万〜</div>
+      <div class="stat-label">月額サポート</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 波形セパレーター ===== -->
+<div class="wave-divider" style="background:linear-gradient(135deg,rgba(10,20,60,0.78) 0%,rgba(37,99,235,0.55) 100%);">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 60" preserveAspectRatio="none">
+    <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#F9FAFB"/>
+  </svg>
+</div>
+
+<!-- ===== スキル ===== -->
+<section id="skills" class="section">
+  <div class="container">
+    <h2 class="section-title">スキルセット</h2>
+    <p class="section-sub">中小企業の業務課題を解決する技術を組み合わせます</p>
+    <div class="skills-grid">
+
+      <!-- Google Apps Script -->
+      <div class="skill-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="skill-icon">
+          <div class="skill-icon-container">
+            <i class="devicon-google-plain colored" style="font-size:2.6rem;"></i>
+          </div>
+        </div>
+        <div class="skill-name">Google Apps Script</div>
+        <div class="skill-desc">Googleスプレッドシート・Docs・Gmail との連携。業務フロー全自動化が得意。</div>
+      </div>
+
+      <!-- LINE Bot -->
+      <div class="skill-card" data-aos="fade-up" data-aos-delay="60">
+        <div class="skill-icon">
+          <div class="skill-icon-container">
+            <i class="fas fa-comment-dots" style="color:#00B900;font-size:2.4rem;"></i>
+          </div>
+        </div>
+        <div class="skill-name">LINE Bot / LIFF</div>
+        <div class="skill-desc">LINE Messaging API を活用した通知・管理システム。スマホから手軽に操作。</div>
+      </div>
+
+      <!-- AI 連携 [Fix1: color: var(--blue) 追加] -->
+      <div class="skill-card" data-aos="fade-up" data-aos-delay="120">
+        <div class="skill-icon">
+          <div class="skill-icon-container">
+            <i class="fas fa-brain" style="color: var(--blue); font-size:2.4rem;"></i>
+          </div>
+        </div>
+        <div class="skill-name">AI 連携</div>
+        <div class="skill-desc">Gemini API / ChatGPT API を組み込んだ自動レポート・要約・判断補助。</div>
+      </div>
+
+      <!-- Excel VBA -->
+      <div class="skill-card" data-aos="fade-up" data-aos-delay="180">
+        <div class="skill-icon">
+          <div class="skill-icon-container">
+            <i class="fas fa-file-excel" style="color:#217346;font-size:2.4rem;"></i>
+          </div>
+        </div>
+        <div class="skill-name">Excel VBA</div>
+        <div class="skill-desc">レポート自動生成・帳票作成・データ集計。既存 Excel 業務の自動化に対応。</div>
+      </div>
+
+      <!-- React / TypeScript -->
+      <div class="skill-card" data-aos="fade-up" data-aos-delay="240">
+        <div class="skill-icon">
+          <div class="skill-icon-container">
+            <i class="devicon-react-original colored" style="font-size:2.6rem;"></i>
+          </div>
+        </div>
+        <div class="skill-name">React / TypeScript</div>
+        <div class="skill-desc">管理画面・社内ツール・Web アプリの開発。モダンなフロントエンドに対応。</div>
+      </div>
+
+      <!-- セキュリティ [Fix1: color: var(--blue) 追加] -->
+      <div class="skill-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="skill-icon">
+          <div class="skill-icon-container">
+            <i class="fas fa-shield-halved" style="color: var(--blue); font-size:2.4rem;"></i>
+          </div>
+        </div>
+        <div class="skill-name">セキュリティ</div>
+        <div class="skill-desc">基本情報・応用情報取得済み。情報処理安全確保支援士取得に向けて勉強中。</div>
+      </div>
+
+      <!-- Python -->
+      <div class="skill-card" data-aos="fade-up" data-aos-delay="360">
+        <div class="skill-icon">
+          <div class="skill-icon-container">
+            <i class="devicon-python-plain colored" style="font-size:2.6rem;"></i>
+          </div>
+        </div>
+        <div class="skill-name">Python / 自動化スクリプト</div>
+        <div class="skill-desc">データ処理・スクリプト自動化・バッチ処理。業務効率化のためのPython開発に対応。</div>
+      </div>
+
+      <!-- API連携 / Webhook [Fix1: color: var(--blue) 追加] -->
+      <div class="skill-card" data-aos="fade-up" data-aos-delay="420">
+        <div class="skill-icon">
+          <div class="skill-icon-container">
+            <i class="fas fa-plug" style="color: var(--blue); font-size:2.4rem;"></i>
+          </div>
+        </div>
+        <div class="skill-name">API連携 / Webhook設計</div>
+        <div class="skill-desc">REST API・Webhook・外部サービス連携。自前の自動化システムをゼロから構築。</div>
+      </div>
+
+      <!-- Node.js / JavaScript -->
+      <div class="skill-card" data-aos="fade-up" data-aos-delay="480">
+        <div class="skill-icon">
+          <div class="skill-icon-container">
+            <i class="devicon-nodejs-plain colored" style="font-size:2.6rem;"></i>
+          </div>
+        </div>
+        <div class="skill-name">Node.js / JavaScript</div>
+        <div class="skill-desc">サーバーサイドJS・npmエコシステム。バックエンド処理・ツール開発に幅広く活用。</div>
+      </div>
+
+      <!-- GitHub / CI/CD -->
+      <div class="skill-card" data-aos="fade-up" data-aos-delay="540">
+        <div class="skill-icon">
+          <div class="skill-icon-container">
+            <i class="fab fa-github" style="color:#24292e;font-size:2.4rem;"></i>
+          </div>
+        </div>
+        <div class="skill-name">GitHub / CI/CD基礎</div>
+        <div class="skill-desc">バージョン管理・GitHub Actions・自動デプロイ。チーム開発の基礎から継続的な改善まで対応。</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== 実績 ===== -->
+<section id="projects" class="section">
+  <div class="container">
+    <h2 class="section-title">制作実績</h2>
+    <p class="section-sub">実際に動くものを作り続けています。すべて GitHub で公開中。</p>
+    <div class="projects-grid">
+
+      <!-- 1枚目: 整骨院向けバドミントン成績管理アプリ → fa-trophy (#F59E0B) -->
+      <div class="project-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="project-header">
+          <div class="project-icon">
+            <div class="project-icon-container">
+              <i class="fas fa-trophy" style="color: #F59E0B;"></i>
+            </div>
+          </div>
+          <div class="project-title">整骨院向け<br />バドミントン成績管理アプリ</div>
+        </div>
+        <div class="project-body">
+          <p class="project-desc">GAS × LINE × LIFF を組み合わせた成績管理システム。スマホから入力・集計・通知まで完結。</p>
+          <div class="project-tags">
+            <span class="tag">GAS</span><span class="tag">LINE LIFF</span><span class="tag">スプレッドシート</span><span class="tag">AI支援開発</span>
+          </div>
+          <a href="https://github.com/hariku0212/geyama-gas-portfolio" class="project-link" target="_blank" rel="noopener">
+            <i class="fab fa-github"></i> GitHub で見る
+          </a>
+        </div>
+      </div>
+
+      <!-- 2枚目: Googleフォーム送信→LINE通知 → fa-bell (#00B900) -->
+      <div class="project-card" data-aos="fade-up" data-aos-delay="60">
+        <div class="project-header">
+          <div class="project-icon">
+            <div class="project-icon-container">
+              <i class="fas fa-bell" style="color: #00B900;"></i>
+            </div>
+          </div>
+          <div class="project-title">Googleフォーム送信<br />→ LINE 通知 自動化</div>
+        </div>
+        <div class="project-body">
+          <p class="project-desc">フォーム回答を即座に LINE グループへ通知。問い合わせ対応・アンケート集計の時間を削減。</p>
+          <div class="project-tags">
+            <span class="tag">GAS</span><span class="tag">LINE Notify</span><span class="tag">Google Forms</span><span class="tag">AI支援開発</span>
+          </div>
+          <a href="https://github.com/hariku0212/portfolio-form-line-notifier" class="project-link" target="_blank" rel="noopener">
+            <i class="fab fa-github"></i> GitHub で見る
+          </a>
+        </div>
+      </div>
+
+      <!-- 3枚目: GAS×Gemini API自動レポート → fa-robot (#2563EB) -->
+      <div class="project-card" data-aos="fade-up" data-aos-delay="120">
+        <div class="project-header">
+          <div class="project-icon">
+            <div class="project-icon-container">
+              <i class="fas fa-robot" style="color: #2563EB;"></i>
+            </div>
+          </div>
+          <div class="project-title">GAS × Gemini API<br />自動レポート生成デモ</div>
+        </div>
+        <div class="project-body">
+          <p class="project-desc">スプレッドシートのデータを AI が分析し、毎週自動でレポートを生成・送信するデモシステム。</p>
+          <div class="project-tags">
+            <span class="tag">GAS</span><span class="tag">Gemini API</span><span class="tag">AI</span><span class="tag">AI支援開発</span>
+          </div>
+          <a href="https://github.com/hariku0212/gas-ai-demo" class="project-link" target="_blank" rel="noopener">
+            <i class="fab fa-github"></i> GitHub で見る
+          </a>
+        </div>
+      </div>
+
+      <!-- 4枚目: 月次請求書PDF自動生成 → fa-file-invoice (#EA580C) -->
+      <div class="project-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="project-header">
+          <div class="project-icon">
+            <div class="project-icon-container">
+              <i class="fas fa-file-invoice" style="color: #EA580C;"></i>
+            </div>
+          </div>
+          <div class="project-title">月次請求書PDF<br />自動生成・Gmail 送信</div>
+        </div>
+        <div class="project-body">
+          <p class="project-desc">スプレッドシートから PDF 請求書を生成し、取引先へ自動メール送信。経理作業を大幅短縮。</p>
+          <div class="project-tags">
+            <span class="tag">GAS</span><span class="tag">Gmail</span><span class="tag">PDF生成</span><span class="tag">AI支援開発</span>
+          </div>
+          <a href="https://github.com/hariku0212/portfolio-invoice-automation" class="project-link" target="_blank" rel="noopener">
+            <i class="fab fa-github"></i> GitHub で見る
+          </a>
+        </div>
+      </div>
+
+      <!-- 5枚目: バドミントン練習記録・週次メール集計 → fa-chart-line (#0EA5E9) -->
+      <div class="project-card" data-aos="fade-up" data-aos-delay="60">
+        <div class="project-header">
+          <div class="project-icon">
+            <div class="project-icon-container">
+              <i class="fas fa-chart-line" style="color: #0EA5E9;"></i>
+            </div>
+          </div>
+          <div class="project-title">バドミントン練習記録<br />・週次メール集計</div>
+        </div>
+        <div class="project-body">
+          <p class="project-desc">練習スコアの記録・集計・グラフ化を自動化。毎週メールで全員に送信する仕組みを構築。</p>
+          <div class="project-tags">
+            <span class="tag">GAS</span><span class="tag">Chart</span><span class="tag">Gmail</span><span class="tag">AI支援開発</span>
+          </div>
+          <a href="https://github.com/hariku0212/portfolio-badminton-tracker" class="project-link" target="_blank" rel="noopener">
+            <i class="fab fa-github"></i> GitHub で見る
+          </a>
+        </div>
+      </div>
+
+      <!-- 6枚目: 家庭菜園管理 → fa-seedling (#84CC16) -->
+      <div class="project-card" data-aos="fade-up" data-aos-delay="120">
+        <div class="project-header">
+          <div class="project-icon">
+            <div class="project-icon-container">
+              <i class="fas fa-seedling" style="color: #84CC16;"></i>
+            </div>
+          </div>
+          <div class="project-title">家庭菜園管理<br />野菜DB・月別作業カレンダー</div>
+        </div>
+        <div class="project-body">
+          <p class="project-desc">野菜ごとの栽培記録・作業カレンダー・月別レポートを GAS で管理するライフハックツール。</p>
+          <div class="project-tags">
+            <span class="tag">GAS</span><span class="tag">スプレッドシート</span><span class="tag">カレンダー</span><span class="tag">AI支援開発</span>
+          </div>
+          <a href="https://github.com/hariku0212/portfolio-garden-tracker" class="project-link" target="_blank" rel="noopener">
+            <i class="fab fa-github"></i> GitHub で見る
+          </a>
+        </div>
+      </div>
+
+      <!-- 7枚目: 英単語テストアプリ → fa-code (#8B5CF6) -->
+      <div class="project-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="project-header">
+          <div class="project-icon">
+            <div class="project-icon-container">
+              <i class="fas fa-code" style="color: #8B5CF6;"></i>
+            </div>
+          </div>
+          <div class="project-title">英単語テストアプリ<br />（React / TypeScript）</div>
+        </div>
+        <div class="project-body">
+          <p class="project-desc">React × TypeScript で構築したフロントエンド SPA。単語登録・ランダム出題・スコア管理機能付き。</p>
+          <div class="project-tags">
+            <span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">SPA</span><span class="tag">AI支援開発</span>
+          </div>
+          <a href="https://github.com/hariku0212/vocab-app" class="project-link" target="_blank" rel="noopener">
+            <i class="fab fa-github"></i> GitHub で見る
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== 経歴・資格 ===== -->
+<section id="career" class="section">
+  <div class="container">
+    <h2 class="section-title">経歴・資格</h2>
+    <p class="section-sub">技術力の裏付けとなる学歴・職歴・資格</p>
+    <div class="career-grid">
+      <div class="career-box" data-aos="fade-right">
+        <div class="career-box-title">経歴</div>
+        <ul class="timeline">
+          <li>
+            <div class="timeline-year">2024年3月</div>
+            <div class="timeline-text">京都大学 工学部 電気電子工学科 卒業</div>
+          </li>
+          <li>
+            <div class="timeline-year">2026年3月</div>
+            <div class="timeline-text">京都大学大学院 電気工学専攻 修了</div>
+          </li>
+          <li>
+            <div class="timeline-year">2026年4月</div>
+            <div class="timeline-text">大手製造業 入社（社名非公開） / システム開発担当</div>
+          </li>
+          <li>
+            <div class="timeline-year">並行して</div>
+            <div class="timeline-text">GAS × LINE × AI 業務自動化 フリーランス活動開始</div>
+          </li>
+        </ul>
+      </div>
+      <div class="career-box" data-aos="fade-left">
+        <div class="career-box-title">資格・認定</div>
+        <ul class="cert-list">
+          <li>
+            <span class="cert-badge">取得済</span>
+            基本情報技術者試験
+          </li>
+          <li>
+            <span class="cert-badge">取得済</span>
+            応用情報技術者試験
+          </li>
+          <li>
+            <span class="cert-badge studying">勉強中</span>
+            情報処理安全確保支援士（RISS）
+          </li>
+          <li>
+            <span class="cert-badge amber">専攻</span>
+            電気工学（京大大学院）
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 料金 ===== -->
+<section id="pricing" class="section">
+  <div class="container">
+    <h2 class="section-title">料金の目安</h2>
+    <p class="section-sub">規模や要件によって柔軟にご相談いただけます。まずはお気軽にどうぞ。</p>
+    <div class="pricing-grid">
+      <div class="price-card" data-aos="zoom-in" data-aos-delay="0">
+        <div class="price-label">スポット対応</div>
+        <div class="price-amount">3万円〜</div>
+        <div class="price-unit">/ 案件</div>
+        <ul class="price-features">
+          <li>単発の自動化ツール作成</li>
+          <li>GAS スクリプト開発</li>
+          <li>LINE Bot 構築</li>
+          <li>既存ツールの改修・修正</li>
+        </ul>
+        <a href="#contact" class="btn" style="background:var(--blue);color:#fff;display:block;text-align:center;padding:12px;">相談する</a>
+        <p class="price-note">※ 要件により変動します</p>
+      </div>
+      <div class="price-card featured" data-aos="zoom-in" data-aos-delay="100">
+        <div class="price-label">月額サポート</div>
+        <div class="price-amount">5万円〜</div>
+        <div class="price-unit">/ 月</div>
+        <ul class="price-features">
+          <li>継続的な改修・機能追加</li>
+          <li>運用サポート・バグ対応</li>
+          <li>新規ツール追加開発</li>
+          <li>月次レポート・改善提案</li>
+        </ul>
+        <a href="#contact" class="btn" style="background:var(--amber);color:#1a1a1a;display:block;text-align:center;padding:12px;">相談する</a>
+        <p class="price-note">※ 3ヶ月〜推奨</p>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:28px;font-size:0.85rem;color:var(--gray-400);">
+      ※ 上記はあくまで参考です。規模・複雑さ・納期によって柔軟に対応します。<br />まずはお気軽にご相談ください。
+    </p>
+  </div>
+</section>
+
+<!-- ===== お問い合わせ ===== -->
+<section id="contact">
+  <h2 class="section-title">お問い合わせ</h2>
+  <p class="section-sub">
+    業務の自動化・効率化でお悩みなら、<br />
+    まずは気軽にフォームからご連絡ください。
+  </p>
+  <p style="color:rgba(255,255,255,0.75);font-size:0.9rem;max-width:480px;margin:0 auto 32px;">
+    「こんなことできる？」という段階のご相談も大歓迎です。<br />
+    要件整理からお手伝いします。
+  </p>
+
+  <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    <input type="text" name="name" placeholder="お名前" required />
+    <input type="email" name="email" placeholder="メールアドレス" required />
+    <textarea name="message" placeholder="お問い合わせ内容（例: 〇〇の自動化を検討しています）" required></textarea>
+    <button type="submit">送信する</button>
+  </form>
+
+  <div class="contact-divider">— または —</div>
+
+  <div class="contact-links">
+    <a href="https://github.com/hariku0212" class="contact-btn contact-btn-github" target="_blank" rel="noopener">
+      <i class="fab fa-github"></i>
+      GitHub プロフィール
+    </a>
+    <a href="mailto:hariku20010212@gmail.com" class="contact-btn contact-btn-mail">
+      <i class="fas fa-envelope"></i> メールで問い合わせ
+    </a>
+    <a href="tel:09039699616" class="contact-btn contact-btn-tel">
+      <i class="fas fa-phone"></i> 09039699616
+    </a>
+  </div>
+</section>
+
+<!-- ===== フッター ===== -->
+<footer>
+  <p>© 2026 hariku — Built with <i class="fas fa-heart" style="color:#E11D48;"></i> and GAS</p>
+</footer>
+
+<!-- ===== AOS.js 初期化 ===== -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  // AOS 初期化
+  AOS.init({
+    duration: 600,
+    easing: 'ease-out-quad',
+    once: true,
+    offset: 60
+  });
+
+  // ナビゲーション: スクロール時にヘッダースタイル変化
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  }, { passive: true });
+
+  // ハンバーガーメニュー
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+
+  hamburger.addEventListener('click', function () {
+    const isOpen = navLinks.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+
+  // ナビリンクをタップしたらメニューを閉じる（モバイル）
+  navLinks.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      navLinks.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
+
+</body>
+</html>
